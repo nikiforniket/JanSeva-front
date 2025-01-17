@@ -52,11 +52,11 @@ export default function useLogin() {
       if (res.data.access) {
         saveSession({
           access: res.data.access,
-          refreshToken: res.data.refresh,
+          refresh: res.data.refresh,
         });
         toast.success("Successfully logged in. Redirecting....", {
           position: "top-right",
-          duration: 2000,
+          duration: 3000,
         });
         navigate(redirectUrl);
       }
