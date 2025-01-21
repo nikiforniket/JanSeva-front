@@ -49,9 +49,24 @@ export async function fetchLogin(obj) {
   return res;
 }
 
-export const getComplaintsList = async() => {
+export const getComplaintsList = async () => {
     const res = await HttpClient.get(
         `${urlHostname}/complaints/`
     )
     return res
+}
+
+export const getComplaintDetails = async (id) => {
+  const res = await HttpClient.get(`${urlHostname}/complaints?id=${id}`)
+  return res
+}
+
+export const getDepartmentList = async () => {
+  const res = await HttpClient.get(`${urlHostname}/departments`)
+  return res
+}
+
+export const getDepartmentDetails = async (id) => {
+  const res = await HttpClient.get(`${urlHostname}/departments/${id}`)
+  return res
 }

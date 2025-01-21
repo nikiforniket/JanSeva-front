@@ -48,7 +48,6 @@ export default function useLogin() {
       //   values
       //   // config
       // );
-      console.log("res", res);
       if (res.data.access) {
         saveSession({
           access: res.data.access,

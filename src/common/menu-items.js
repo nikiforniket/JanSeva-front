@@ -13,6 +13,20 @@ const TWO_COl_MENU_ITEMS = [
 			}
 		],
 	},
+	{
+		key: 'Departments & Categories',
+		icon: 'smart-home',
+		label: 'Departments & Categories',
+		isTitle: true,
+		children: [
+			{
+				key: 'Departments',
+				label: 'Departments',
+				url: '/departments',
+				parentKey: 'Departments & Categories',
+			}
+		],
+	},
 	// {
 	// 	key: 'apps',
 	// 	icon: 'apps',

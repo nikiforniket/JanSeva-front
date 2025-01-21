@@ -8,7 +8,7 @@ const PageBreadcrumb = ({ title, subName }) => {
 			<Row>
 				<Col sm={12}>
 					<div className="page-title-box">
-						<div className="float-end">
+						{/* <div className="float-end">
 							<ol className="breadcrumb">
 								<li className="breadcrumb-item">
 									<Link to="">Metrica</Link>
@@ -18,7 +18,7 @@ const PageBreadcrumb = ({ title, subName }) => {
 								</li>
 								<li className="breadcrumb-item active">{title}</li>
 							</ol>
-						</div>
+						</div> */}
 						<h4 className="page-title">{title}</h4>
 					</div>
 				</Col>

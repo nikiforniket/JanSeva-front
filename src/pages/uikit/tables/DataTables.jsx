@@ -9,38 +9,54 @@ import {
 } from 'react-bootstrap'
 import { customersDetails } from './data'
 import { Table } from '@/components'
-const columns = [
-	{
-		Header: 'ID',
-		accessor: 'id',
-		defaultCanSort: true,
-	},
-	{
-		Header: 'Name',
-		accessor: 'name',
-		defaultCanSort: true,
-	},
-	{
-		Header: 'Ext.',
-		accessor: 'ext',
-		defaultCanSort: false,
-	},
-	{
-		Header: 'City',
-		accessor: 'city',
-		defaultCanSort: true,
-	},
-	{
-		Header: 'Start Date',
-		accessor: 'startDate',
-		defaultCanSort: true,
-	},
-	{
-		Header: 'Completion',
-		accessor: 'completion',
-		defaultCanSort: true,
-	},
-]
+import { Link } from 'react-router-dom'
+// const columns = [
+// 	{
+// 		Header: 'uuid',
+// 		accessor: 'uuid',
+// 		defaultCanSort: true,
+// 		// Cell: props => <a href="https://physically-calm-hermit.ngrok-free.app/complaints/">{"QWERTY"}</a>,
+// 		// Cell: ({ row }) => (console.log('QQQQQQ',row))
+// 		Cell: ({ row }) => (<Link to={{ pathname: `/` }}>{row.values.uuid}</Link>)
+// 	},
+// 	{
+// 		Header: 'Full Name',
+// 		accessor: 'full_name',
+// 		defaultCanSort: true,
+// 	},
+// 	{
+// 		Header: 'Phone Number',
+// 		accessor: 'phone_number',
+// 		defaultCanSort: false,
+// 	},
+// 	{
+// 		Header: 'Department Name',
+// 		accessor: 'department_name',
+// 		defaultCanSort: true,
+// 	},
+// 	{
+// 		Header: 'Category Name',
+// 		accessor: 'category_name',
+// 		defaultCanSort: true,
+// 	},
+// 	{
+// 		Header: 'Status',
+// 		accessor: 'status',
+// 		defaultCanSort: true,
+// 	},{
+// 		Header: 'Location Name',
+// 		accessor: 'location_name',
+// 		defaultCanSort: true,
+// 	},{
+// 		Header: 'Created At',
+// 		accessor: 'created_at',
+// 		defaultCanSort: true,
+// 	},{
+// 		Header: 'Updated At',
+// 		accessor: 'updated_at',
+// 		defaultCanSort: true,
+// 	},
+// ]
 const sizePerPageList = [
 	{
 		text: '5',
@@ -59,23 +75,23 @@ const sizePerPageList = [
 		value: customersDetails.length,
 	},
 ]
-const DataTables = () => {
+const DataTables = (props) => {
 	return (
 		<>
-			<PageBreadcrumb title="Datatables" subName="Tables" />
+			<PageBreadcrumb title={props.title} subName="Tables" />
 			<Row>
 				<Col xs="12">
 					<Card>
-						<CardHeader>
+						{/* <CardHeader>
 							<CardTitle>Pagination &amp; Sort </CardTitle>
 							<p className="text-muted mb-0">
 								A simple example of table with pagination and column sorting
 							</p>
-						</CardHeader>
+						</CardHeader> */}
 						<CardBody>
 							<Table
-								columns={columns}
-								data={customersDetails}
+								columns={props.columnConfig}
+								data={props.rowData}
 								pageSize={5}
 								sizePerPageList={sizePerPageList}
 								isSortable={true}
@@ -85,7 +101,7 @@ const DataTables = () => {
 					</Card>
 				</Col>
 			</Row>
-			<Row>
+			{/* <Row>
 				<Col xs="12">
 					<Card>
 						<CardHeader>
@@ -151,7 +167,7 @@ const DataTables = () => {
 						</CardBody>
 					</Card>
 				</Col>
-			</Row>
+			</Row> */}
 		</>
 	)
 }

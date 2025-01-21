@@ -18,19 +18,19 @@ const GlobalFilter = ({
 }) => {
 	const count = preGlobalFilteredRows.length
 	const [value, setValue] = useState(globalFilter)
-	const onChange = useAsyncDebounce((value) => {
-		setGlobalFilter(value || undefined)
-	}, 200)
+	// const onChange = useAsyncDebounce((value) => {
+	// 	setGlobalFilter(value || undefined)
+	// }, 200)
 	return (
 		<div className={clsx(searchBoxClass)}>
 			<span className="d-flex align-items-center">
 				Search :{' '}
 				<input
 					value={value || ''}
-					onChange={(e) => {
-						setValue(e.target.value)
-						onChange(e.target.value)
-					}}
+					// onChange={(e) => {
+					// 	setValue(e.target.value)
+					// 	onChange(e.target.value)
+					// }}
 					placeholder={`${count} records...`}
 					className="form-control w-auto ms-1"
 				/>
@@ -158,14 +158,14 @@ const Table = (props) => {
 				<GlobalFilter
 					preGlobalFilteredRows={dataTable.preGlobalFilteredRows}
 					globalFilter={dataTable.state.globalFilter}
-					setGlobalFilter={dataTable.setGlobalFilter}
+					// setGlobalFilter={dataTable.setGlobalFilter}
 					searchBoxClass={props['searchBoxClass']}
 				/>
 			)}
 
 			<div className="table-responsive">
 				<table
-					{...dataTable.getTableProps()}
+					role={dataTable.getTableBodyProps().role}
 					className={clsx(
 						'table table-centered react-table',
 						props['tableClass']
@@ -173,12 +173,18 @@ const Table = (props) => {
 				>
 					<thead className={props['theadClass']}>
 						{dataTable.headerGroups.map((headerGroup) => (
-							<tr {...headerGroup.getHeaderGroupProps()}>
+							<tr key={headerGroup.getHeaderGroupProps().key} role={headerGroup.getHeaderGroupProps().role}>
 								{headerGroup.headers.map((column) => (
 									<th
-										{...column.getHeaderProps(
+										// {...column.getHeaderProps(
+										// 	column.defaultCanSort && column.getSortByToggleProps()
+										// )}
+										key={column.getHeaderProps(
 											column.defaultCanSort && column.getSortByToggleProps()
-										)}
+										).key}
+										role={column.getHeaderProps(
+											column.defaultCanSort && column.getSortByToggleProps()
+										).role}
 										className={clsx({
 											sorting_desc: column.isSortedDesc === true,
 											sorting_asc: column.isSortedDesc === false,
@@ -195,10 +201,11 @@ const Table = (props) => {
 						{(rows || []).map((row) => {
 							dataTable.prepareRow(row)
 							return (
-								<tr {...row.getRowProps()}>
+								<tr key={row.getRowProps().key} role={row.getRowProps().row} >
 									{row.cells.map((cell) => {
+										let tdProp = cell.getCellProps()
 										return (
-											<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+											<td key={tdProp.key} role={`${tdProp.role}`}>{cell.render('Cell')}</td>
 										)
 									})}
 								</tr>
