@@ -57,7 +57,12 @@ export const getComplaintsList = async () => {
 }
 
 export const getComplaintDetails = async (id) => {
-  const res = await HttpClient.get(`${urlHostname}/complaints?id=${id}`)
+  const res = await HttpClient.get(`${urlHostname}/complaints/${id}/`)
+  return res
+}
+
+export const updateComplaintDetails = async (id,obj) => {
+  const res = HttpClient.patch(`${urlHostname}/complaints/${id}/`,obj)
   return res
 }
 
@@ -68,5 +73,25 @@ export const getDepartmentList = async () => {
 
 export const getDepartmentDetails = async (id) => {
   const res = await HttpClient.get(`${urlHostname}/departments/${id}`)
+  return res
+}
+
+export const registerCategory = async (obj) => {
+  const res = await HttpClient.post(`${urlHostname}/categories/`,obj)
+  return res
+}
+
+export const updateCategory = async (obj,id) => {
+  const res = await HttpClient.put(`${urlHostname}/categories/${id}/`, obj)
+  return res
+} 
+
+export const registerDepartment = async(obj) => {
+  const res = await HttpClient.post(`${urlHostname}/departments/register/`,obj)
+  return res
+}
+
+export const updateDepartment = async(id,obj) => {
+  const res = await HttpClient.put(`${urlHostname}/departments/${id}/`,obj)
   return res
 }

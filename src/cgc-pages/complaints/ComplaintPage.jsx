@@ -3,13 +3,18 @@ import { HttpClient } from '@/common'
 import { PageMetaData } from '@/components'
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import DataTables from './uikit/tables/DataTables'
+import DataTables from '../../pages/uikit/tables/DataTables'
 import { Link } from 'react-router-dom'
-import { customersDetails } from './uikit/tables/data'
+import { customersDetails } from '../../pages/uikit/tables/data'
+import { useDispatch, useSelector } from 'react-redux'
+import { setComplaintList } from '@/store/actions/ComplaintActions'
 
 const ComplaintPage = () => {
 
-  const [complaintList,setComplaintList] = useState([])
+//   const [complaintList,setComplaintList] = useState([])
+  const dispatch = useDispatch()
+
+  const complaintDetails = useSelector((state) => state.ComplaintReducer.complaintDetails)
 
   const columnConfig = [
 	{
@@ -62,17 +67,20 @@ const ComplaintPage = () => {
   useEffect(() => {
 
     getComplaintsList().then((res) => {
-      if(res?.data.results){
-        setComplaintList(res?.data?.results)
+      if(res?.data?.results){
+        // setComplaintList(res?.data?.results)
+		dispatch(setComplaintList(res.data.results))
       }
     })
 
   },[])
-
   return (
     <>
     <PageMetaData title="Complaints" />
-    <DataTables title={`Complaints`} columnConfig = {columnConfig} rowData={complaintList} />
+	{complaintDetails.length > 0 && ( // need to check for whatever we pass to rowData -> on initial render complaintDetails was empty hence datatables was throwing errors as it has some map function looping over rowData without null checks
+    <DataTables title={`Complaints`} columnConfig = {columnConfig} rowData={complaintDetails} />
+	)
+}
     {/* <Button onClick={getComplaintsList}>Hit Me</Button> */}
     </>
   )

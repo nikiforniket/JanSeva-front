@@ -1,12 +1,12 @@
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 
-const HomePage = lazy(() => import('@/pages/HomePage.jsx'))
+const HomePage = lazy(() => import('@/cgc-pages/HomePage.jsx'))
 const Login = lazy(() => import('@/pages/auth/Login/Login'))
-const ComplaintPage = lazy(() => import('@/pages/ComplaintPage.jsx'))
-const DepartmentsPage = lazy(() => import('@/pages/DepartmentsPage'))
-const ComplaintDetailsPage = lazy(() => import('@/pages/ComplaintDetailsPage'))
-const DepartmentDetailsPage = lazy(() => import('@/pages/DepartmentDetailsPage'))
+const ComplaintPage = lazy(() => import('@/cgc-pages/complaints/ComplaintPage.jsx'))
+const DepartmentsPage = lazy(() => import('@/cgc-pages/departments/DepartmentsPage'))
+const ComplaintDetailsPage = lazy(() => import('@/cgc-pages/complaints/ComplaintDetailsPage'))
+const DepartmentDetailsPage = lazy(() => import('@/cgc-pages/departments/DepartmentDetailsPage'))
 
 const appsRoutes = [
     {

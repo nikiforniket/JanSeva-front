@@ -8,7 +8,7 @@ const TWO_COl_MENU_ITEMS = [
 			{
 				key: 'Complaint',
 				label: 'Complaint',
-				url: '/complaint',
+				url: '/complaints',
 				parentKey: 'Complaint & Grievance Cell',
 			}
 		],

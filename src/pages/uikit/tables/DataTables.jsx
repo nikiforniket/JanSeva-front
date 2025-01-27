@@ -78,7 +78,7 @@ const sizePerPageList = [
 const DataTables = (props) => {
 	return (
 		<>
-			<PageBreadcrumb title={props.title} subName="Tables" />
+			<PageBreadcrumb title={props?.title ? props.title : ""} subName="Tables" />
 			<Row>
 				<Col xs="12">
 					<Card>
@@ -95,7 +95,6 @@ const DataTables = (props) => {
 								pageSize={5}
 								sizePerPageList={sizePerPageList}
 								isSortable={true}
-								pagination={true}
 							/>
 						</CardBody>
 					</Card>

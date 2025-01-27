@@ -10,6 +10,7 @@ import {
 	useTable,
 } from 'react-table'
 import { Pagination } from './Pagination'
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'react-bootstrap'
 const GlobalFilter = ({
 	preGlobalFilteredRows,
 	globalFilter,
