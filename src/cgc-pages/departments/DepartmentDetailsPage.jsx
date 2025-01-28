@@ -94,7 +94,7 @@ const DepartmentDetailsPage = () => {
         <Col lg="12">
           <Card className="m-2">
             <CardHeader>
-              <CardTitle>Department Details</CardTitle>
+              <CardTitle>Sector Details</CardTitle>
             </CardHeader>
             <CardBody>
               <Row>

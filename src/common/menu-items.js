@@ -7,7 +7,7 @@ const TWO_COl_MENU_ITEMS = [
 		children: [
 			{
 				key: 'Departments',
-				label: 'Departments',
+				label: 'Sectors',
 				url: '/departments',
 				parentKey: 'Complaint & Grievance Cell',
 			},

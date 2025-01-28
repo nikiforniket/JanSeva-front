@@ -66,12 +66,12 @@ const DepartmentsPage = () => {
     
   return (
     <>
-        <PageMetaData title="Departments" />
+        <PageMetaData title="Sectors" />
         <div className='mt-2' style={{float:'right'}}>
-        <Button onClick={defaultModalToggle}>Add Department</Button>
+        <Button onClick={defaultModalToggle}>Add Sector</Button>
         </div>
         {departmentList?.length > 0 && (
-            <DataTables title={`Departments`} columnConfig = {columnConfig} rowData={departmentList} />
+            <DataTables title={`Sectors`} columnConfig = {columnConfig} rowData={departmentList} />
         )}
         <Modal
         show={defaultModalOpen}

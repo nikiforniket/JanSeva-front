@@ -14,6 +14,8 @@ import {
     Row,
   } from "react-bootstrap";
 import { geoComplaintDetailsFilterConfig } from '@/config/QuickFilters';
+import Gallery from '@/pages/other-pages/Gallery';
+import { PageMetaData } from '@/components';
 
 const GeoComplaintDetailsPage = () => {
     const {id} = useParams()
@@ -42,6 +44,7 @@ const GeoComplaintDetailsPage = () => {
 
       return (
         <>
+        <PageMetaData title="GeoComplaintDetails" />
           <Row>
             <Col lg="12">
               <Card className="m-2">
@@ -119,19 +122,29 @@ const GeoComplaintDetailsPage = () => {
                             </Row>
                           );
                         }
-                        <Row className="mb-3">
-                          <Col></Col>
-                          <Col sm="10">
-                            <Button onClick={updateStatus}>Save Status</Button>
-                          </Col>
-                        </Row>;
+                        // <Row className="mb-3">
+                        //   <Col></Col>
+                        //   <Col sm="10">
+                        //     <Button onClick={updateStatus}>Save Status</Button>
+                        //   </Col>
+                        // </Row>;
                       })}
                     </Col>
+                    {/* <Col lg="6">
+                    <h3>Images</h3>
+                    <Gallery imgData={geoComplaintDetails.files}/>
+                    </Col> */}
                   </Row>
                   <Row className="mb-3">
                     <Col></Col>
                     <Col sm="10">
                       <Button onClick={updateStatus}>Save Status</Button>
+                    </Col>
+                  </Row>
+                  <Row className="mb-3">
+                    <Col sm="10">
+                    <h3>Images</h3>
+                    <Gallery imgData={geoComplaintDetails.files}/>
                     </Col>
                   </Row>
                 </CardBody>

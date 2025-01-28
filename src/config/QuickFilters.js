@@ -62,6 +62,33 @@ const suggestionStatus = [
   },
 ];
 
+const geoComplaintStatus = [
+    {
+      label: "Registered",
+      value: "registered",
+    },
+    {
+      label: "In Progress",
+      value: "in_progress",
+    },
+    {
+      label: "Reported",
+      value: "reported",
+    },
+    {
+      label: "Report Acknowledged",
+      value: "report_acknowledged",
+    },
+    {
+      label: "Rejected",
+      value: "rejected",
+    },
+    {
+      label: "Resolved",
+      value: "resolved",
+    },
+  ];
+
 export const complaintDetailsFilterConfig = {
   fields: [
     {
@@ -79,7 +106,7 @@ export const complaintDetailsFilterConfig = {
       edit: false,
     },
     {
-      label: "Department",
+      label: "Sector",
       id: "department",
       type: "input",
       options: [],
@@ -270,7 +297,7 @@ export const geoComplaintDetailsFilterConfig = {
         label: "Status",
         id: "status",
         type: "dropdown",
-        options: suggestionStatus,
+        options: geoComplaintStatus,
         edit: false,
       },
       {
