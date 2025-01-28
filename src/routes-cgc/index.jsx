@@ -7,6 +7,12 @@ const ComplaintPage = lazy(() => import('@/cgc-pages/complaints/ComplaintPage.js
 const DepartmentsPage = lazy(() => import('@/cgc-pages/departments/DepartmentsPage'))
 const ComplaintDetailsPage = lazy(() => import('@/cgc-pages/complaints/ComplaintDetailsPage'))
 const DepartmentDetailsPage = lazy(() => import('@/cgc-pages/departments/DepartmentDetailsPage'))
+const DemandLettersPage = lazy(() => import('@/cgc-pages/demand-letters/DemandLetter'))
+const DemandDetails = lazy(() => import('@/cgc-pages/demand-letters/DemandDetails'))
+const SuggestionPage = lazy(() => import('@/cgc-pages/Suggestions/SuggestionPage'))
+const SuggestionDetails = lazy(() => import('@/cgc-pages/Suggestions/SuggestionDetails'))
+const GeoComplaintsPage = lazy(() => import('@/cgc-pages/geo-complaints/GeoComplaintsPage'))
+const GeoComplaintDetailsPage = lazy(() => import('@/cgc-pages/geo-complaints/GeoComplaintDetailsPage'))
 
 const appsRoutes = [
     {
@@ -31,8 +37,38 @@ const appsRoutes = [
     },
     {
         path : '/departments/:id',
-        name : 'ComplaintDetailsPage',
+        name : 'DepartmentDetailsPage',
         element: <DepartmentDetailsPage/>
+    },
+    {
+        path : '/demandletters',
+        name : 'DemandLettersPage',
+        element: <DemandLettersPage/>
+    },
+    {
+        path : '/demandletters/:id',
+        name : 'DemandDetailsPage',
+        element: <DemandDetails/>
+    },
+    {
+        path : '/suggestions',
+        name : 'SuggestionPage',
+        element: <SuggestionPage/>
+    },
+    {
+        path : '/suggestions/:id',
+        name : 'SuggestionDetailsPage',
+        element: <SuggestionDetails/>
+    },
+    {
+        path : '/geocomplaints',
+        name : 'GeoComplaintsPage',
+        element: <GeoComplaintsPage/>
+    },
+    {
+        path : '/geocomplaints/:id',
+        name : 'GeoComplaintDetails',
+        element: <GeoComplaintDetailsPage/>
     },
 ]
 

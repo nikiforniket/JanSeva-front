@@ -1,4 +1,4 @@
-import { SET_DEPARTMENT_CATEOGORY_LIST, SET_DEPARTMENT_LIST } from "../actions/ActionTypes"
+import { SET_DEPARTMENT_LIST } from "../actions/ActionTypes"
 
 
 const initial_state = {

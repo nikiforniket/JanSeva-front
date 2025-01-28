@@ -49,6 +49,7 @@ export async function fetchLogin(obj) {
   return res;
 }
 
+// Complaints API
 export const getComplaintsList = async () => {
     const res = await HttpClient.get(
         `${urlHostname}/complaints/`
@@ -66,6 +67,7 @@ export const updateComplaintDetails = async (id,obj) => {
   return res
 }
 
+// Departments and Category API
 export const getDepartmentList = async () => {
   const res = await HttpClient.get(`${urlHostname}/departments`)
   return res
@@ -93,5 +95,54 @@ export const registerDepartment = async(obj) => {
 
 export const updateDepartment = async(id,obj) => {
   const res = await HttpClient.put(`${urlHostname}/departments/${id}/`,obj)
+  return res
+}
+
+// Demand and Letters API
+export const getDemandLettersList = async() => {
+  const res = await HttpClient.get(`${urlHostname}/demand-letters/`)
+  return res
+}
+
+export const getDemandDetails = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/demand-letters/${id}/`)
+  return res
+}
+
+export const updateDemandDetails = async(id,obj) => {
+  const res = await HttpClient.patch(`${urlHostname}/demand-letters/${id}/`,obj)
+  return res
+}
+
+// Suggestions API
+export const getSuggestionList = async() => {
+  const res = await HttpClient.get(`${urlHostname}/suggestions/`)
+  return res
+}
+
+export const getSuggestionDetails = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/suggestions/${id}/`)
+  return res
+}
+
+export const updateSuggestionDetails = async(id,obj) => {
+  const res = await HttpClient.patch(`${urlHostname}/suggestions/${id}/`,obj)
+  return res
+}
+// geocomplaints/
+
+// Geo-Complaints API
+export const getGeoComplaintList = async() => {
+  const res = await HttpClient.get(`${urlHostname}/geocomplaints/`)
+  return res
+}
+
+export const getGeoComplaintDetails = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/geocomplaints/${id}/`)
+  return res
+}
+
+export const updateGeoComplaintDetails = async(id,obj) => {
+  const res = await HttpClient.patch(`${urlHostname}/geocomplaints/${id}/`,obj)
   return res
 }

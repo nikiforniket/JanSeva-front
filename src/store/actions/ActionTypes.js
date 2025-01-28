@@ -1,4 +1,9 @@
-export const SET_COMPLAINT_LIST = 'Set Complaint Details' 
+export const SET_COMPLAINT_LIST = 'Set Complaints List' 
 
-export const SET_DEPARTMENT_LIST = 'Set Department Details'
-export const SET_DEPARTMENT_CATEOGORY_LIST = 'Set Department Category List'
+export const SET_DEPARTMENT_LIST = 'Set Departments List'
+
+export const SET_DEMAND_LETTER_LIST = 'Set Demand Letters List'
+
+export const SET_SUGGESTION_LIST = 'Set Suggestions List'
+
+export const SET_GEOCOMPLAINT_LIST = 'Set GeoComplaint List'

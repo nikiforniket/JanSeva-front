@@ -6,27 +6,51 @@ const TWO_COl_MENU_ITEMS = [
 		isTitle: true,
 		children: [
 			{
+				key: 'Departments',
+				label: 'Departments',
+				url: '/departments',
+				parentKey: 'Complaint & Grievance Cell',
+			},
+			{
 				key: 'Complaint',
 				label: 'Complaint',
 				url: '/complaints',
 				parentKey: 'Complaint & Grievance Cell',
-			}
-		],
-	},
-	{
-		key: 'Departments & Categories',
-		icon: 'smart-home',
-		label: 'Departments & Categories',
-		isTitle: true,
-		children: [
+			},
 			{
-				key: 'Departments',
-				label: 'Departments',
-				url: '/departments',
-				parentKey: 'Departments & Categories',
+				key: 'Geo Complaints',
+				label: 'Geo Complaints',
+				url: '/geocomplaints',
+				parentKey: 'Complaint & Grievance Cell',
+			},
+			{
+				key: 'Suggestion',
+				label: 'Suggestion',
+				url: '/suggestions',
+				parentKey: 'Complaint & Grievance Cell',
+			},
+			{
+				key: 'Demand',
+				label: 'Demand',
+				url: '/demandletters',
+				parentKey: 'Complaint & Grievance Cell',
 			}
 		],
 	},
+	// {
+	// 	key: 'Departments & Categories',
+	// 	icon: 'smart-home',
+	// 	label: 'Departments & Categories',
+	// 	isTitle: true,
+	// 	children: [
+	// 		{
+	// 			key: 'Departments',
+	// 			label: 'Departments',
+	// 			url: '/departments',
+	// 			parentKey: 'Departments & Categories',
+	// 		}
+	// 	],
+	// },
 	// {
 	// 	key: 'apps',
 	// 	icon: 'apps',
