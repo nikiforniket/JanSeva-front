@@ -7,12 +7,15 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { saveUserInfo } from "@/store/actions/GeneralActions.js";
 
 export default function useLogin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { isAuthenticated, saveSession } = useAuthContext();
+  const dispatch = useDispatch()
 
   const phoneRegex = RegExp(
     /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
@@ -33,7 +36,7 @@ export default function useLogin() {
     },
   });
   // const redirectUrl = useMemo(() => (location.state?.from.pathname, location.pathname ?? "/"), [location.state]);
-  const redirectUrl = searchParams.get("next") ?? "/"; // here we will add our home page in else part and in if part other url will come from which we redirected
+  const redirectUrl = searchParams.get("next") ?? "/departments"; // here we will add our home page in else part and in if part other url will come from which we redirected
   const login = handleSubmit(async function (values) {
     setLoading(true);
     try {
@@ -57,6 +60,7 @@ export default function useLogin() {
           position: "top-right",
           duration: 3000,
         });
+        dispatch(saveUserInfo(values.phone_number))
         navigate(redirectUrl);
       }
     } catch (e) {

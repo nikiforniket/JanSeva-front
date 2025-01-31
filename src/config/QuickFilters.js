@@ -92,6 +92,13 @@ const geoComplaintStatus = [
 export const complaintDetailsFilterConfig = {
   fields: [
     {
+      label: "UUID",
+      id: "uuid",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
       label: "Content",
       id: "content",
       type: "textarea",
@@ -233,6 +240,19 @@ export const demandDetailsConfig = {
       options: DemandStatus,
       edit: false,
     },
+    {
+      label: 'Created At',
+      id: 'created_at',
+      type : 'input',
+      options:[],
+      edit:false
+  },{
+      label: 'Updated At',
+      id: 'updated_at',
+      type : 'input',
+      options:[],
+      edit:false
+  },
   ],
 };
 
@@ -267,6 +287,19 @@ export const suggestionsDetailsFilterConfig = {
       options: suggestionStatus,
       edit: false,
     },
+    {
+      label: 'Created At',
+      id: 'created_at',
+      type : 'input',
+      options:[],
+      edit:false
+  },{
+      label: 'Updated At',
+      id: 'updated_at',
+      type : 'input',
+      options:[],
+      edit:false
+  },
   ],
 };
 
@@ -321,18 +354,18 @@ export const geoComplaintDetailsFilterConfig = {
         options: [],
         edit: false,
       },
-    //   {
-    //     label: 'Created At',
-    //     id: 'created_at',
-    //     type : 'input',
-    //     options:[],
-    //     edit:false
-    // },{
-    //     label: 'Updated At',
-    //     id: 'updated_at',
-    //     type : 'input',
-    //     options:[],
-    //     edit:false
-    // },
+      {
+        label: 'Created At',
+        id: 'created_at',
+        type : 'input',
+        options:[],
+        edit:false
+    },{
+        label: 'Updated At',
+        id: 'updated_at',
+        type : 'input',
+        options:[],
+        edit:false
+    },
     ],
   };

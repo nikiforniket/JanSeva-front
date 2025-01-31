@@ -22,14 +22,14 @@ const TopNavbar = () => {
 		<div className="topbar">
 			<nav className="navbar-custom" id="navbar-custom">
 				<ul className="list-unstyled topbar-nav float-end mb-0">
-					<LanguageDropdown />
+					{/* <LanguageDropdown /> */}
 
-					<EmailDropdown emails={emails} />
+					{/* <EmailDropdown emails={emails} /> */}
 
-					<NotificationDropdown notifications={notifications} />
+					{/* <NotificationDropdown notifications={notifications} /> */}
 
 					<ProfileDropdown />
-					<li className="notification-list">
+					{/* <li className="notification-list">
 						<Link
 							className="nav-link arrow-none nav-icon offcanvas-btn"
 							to=""
@@ -37,7 +37,7 @@ const TopNavbar = () => {
 						>
 							<i className="ti ti-settings ti-spin" />
 						</Link>
-					</li>
+					</li> */}
 				</ul>
 				<ul className="list-unstyled topbar-nav mb-0">
 					<li>
@@ -49,7 +49,7 @@ const TopNavbar = () => {
 							<i className="ti ti-menu-2" />
 						</button>
 					</li>
-					<li className="hide-phone app-search">
+					{/* <li className="hide-phone app-search">
 						<form role="search" action="#" method="get">
 							<input
 								type="search"
@@ -61,7 +61,7 @@ const TopNavbar = () => {
 								<i className="ti ti-search" />
 							</button>
 						</form>
-					</li>
+					</li> */}
 				</ul>
 			</nav>
 		</div>

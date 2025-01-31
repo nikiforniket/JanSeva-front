@@ -15,6 +15,7 @@ import {
 import { getSuggestionDetails, updateSuggestionDetails } from "@/api/actions";
 import { suggestionsDetailsFilterConfig } from "@/config/QuickFilters";
 import { toast } from "sonner";
+import { date_convert } from "@/config/dateConverter";
 
 const SuggestionDetails = () => {
   const { id } = useParams();
@@ -24,7 +25,15 @@ const SuggestionDetails = () => {
 
   useEffect(() => {
     getSuggestionDetails(id).then((res) => {
-      setSuggestionDetails(res.data);
+      if (res?.data) {
+        const { d1, d2 } = date_convert(
+          res.data.created_at,
+          res.data.updated_at
+        );
+        res.data.created_at = d1;
+        res.data.updated_at = d2;
+        setSuggestionDetails(res.data);
+      }
     });
   }, []);
 
@@ -68,6 +77,7 @@ const SuggestionDetails = () => {
                               defaultValue={suggestionDetails[each.id]}
                               id={each.id}
                               readOnly={!each.edit}
+                              disabled={!each.edit}
                             />
                           </Col>
                         </Row>
@@ -92,7 +102,19 @@ const SuggestionDetails = () => {
                           </Col>
                         </Row>
                       );
-                    } else if (each.type == "dropdown") {
+                    }
+
+                    <Row className="mb-3">
+                      <Col></Col>
+                      <Col sm="10">
+                        <Button onClick={updateStatus}>Save Status</Button>
+                      </Col>
+                    </Row>;
+                  })}
+                </Col>
+                <Col lg="6">
+                  {suggestionsDetailsFilterConfig.fields.map((each) => {
+                    if (each.type == "dropdown") {
                       return (
                         <Row className="mb-3">
                           <FormLabel
@@ -123,19 +145,13 @@ const SuggestionDetails = () => {
                         </Row>
                       );
                     }
-                    <Row className="mb-3">
-                      <Col></Col>
-                      <Col sm="10">
-                        <Button onClick={updateStatus}>Save Status</Button>
-                      </Col>
-                    </Row>;
                   })}
-                </Col>
-              </Row>
-              <Row className="mb-3">
-                <Col></Col>
-                <Col sm="10">
-                  <Button onClick={updateStatus}>Save Status</Button>
+                  <Row className="mb-3">
+                    <Col></Col>
+                    <Col sm="10">
+                      <Button onClick={updateStatus}>Update Status</Button>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </CardBody>

@@ -20,9 +20,11 @@ import {
 } from "react-bootstrap";
 import DataTables from "@/pages/uikit/tables/DataTables";
 import ActionDropdown from "@/cgc-pages/departments/ActionDropdown";
+import UpdateDepartment from "./UpdateDepartment";
+import AddCategory from "./AddCategory";
 
 const DepartmentDetailsPage = () => {
-  const [departmentList, setDepartmentList] = useState([]);
+  const [departmentDetails, setDepartmentDetails] = useState([]);
   const [showAddCategoryForm, setShowAddCategoryForm] = useState(false)
   const [categoryVal,setCategoryVal] = useState("")
   const [categoryData,setCategoryData]=useState(null)
@@ -50,7 +52,7 @@ const DepartmentDetailsPage = () => {
   useEffect(() => {
     getDepartmentDetails(id).then((res) => {
       if (res?.data) {
-        setDepartmentList(res.data);
+        setDepartmentDetails(res.data);
       }
     });
   }, []);
@@ -75,18 +77,7 @@ const DepartmentDetailsPage = () => {
 
     const detail = await getDepartmentDetails(id)
     setCategoryData(detail.data.categories)
-    // setDepartmentList(currentVal =>{
-    //   currentVal['categories']=detail.data.categories
-    // })
-    // departmentList['categories'] = detail.data.categories
-    // console.log(departmentList)
-
-    // setDepartmentList(departmentList)
   }
-
-  // const handleCategoryChange = (val) => {
-  //   console.log("##", val);
-  // };
 
   return (
     <>
@@ -112,7 +103,7 @@ const DepartmentDetailsPage = () => {
                           <Col sm="10">
                             <FormControl
                               type="text"
-                              defaultValue={departmentList[each.id]}
+                              defaultValue={departmentDetails[each.id]}
                               id={each.id}
                               readOnly={!each.edit}
                             />
@@ -146,7 +137,7 @@ const DepartmentDetailsPage = () => {
                       );
                     } else if (
                       each.type == "table" &&
-                      departmentList[each.id]?.length > 0
+                      departmentDetails[each.id]?.length > 0
                     ) {
                       // {departmentList && (
                       return (
@@ -160,7 +151,7 @@ const DepartmentDetailsPage = () => {
                           <Col sm="10">
                           <DataTables
                             columnConfig={categoryTableConfig}
-                            rowData={categoryData ? categoryData : departmentList[each.id]}
+                            rowData={categoryData ? categoryData : departmentDetails[each.id]}
                           />
                           </Col>
                         </Row>
@@ -170,8 +161,8 @@ const DepartmentDetailsPage = () => {
                   })}
                 </Col>
                 <Col lg='6'>
-                  <Button variant="info" onClick={toggleAddCategory}>Add Category</Button>
-                  {showAddCategoryForm && (
+                  {/* <Button variant="info" onClick={toggleAddCategory}>Add Category</Button> */}
+                  {/* {showAddCategoryForm && (
                     <Row className="mb-3 mt-3">
                     <FormLabel
                       htmlFor='CategoryName'
@@ -192,7 +183,9 @@ const DepartmentDetailsPage = () => {
                     <Button onClick={addCategory} variant="dark">Submit</Button>
                     </Col>
                   </Row>
-                  )}
+                  )} */}
+                  <AddCategory id={id} setCategoryData={setCategoryData} />
+                  <UpdateDepartment id={id} departmentName={departmentDetails.name} setDepartmentDetails={setDepartmentDetails} />
                 </Col>
               </Row>
             </CardBody>

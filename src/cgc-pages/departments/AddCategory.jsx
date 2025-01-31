@@ -1,6 +1,7 @@
 import {
     getDepartmentDetails,
     getDepartmentList,
+    registerCategory,
     updateCategory,
     updateDepartment,
   } from "@/api/actions";
@@ -20,46 +21,40 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
   } from "react-bootstrap";
   import { useDispatch, useSelector } from "react-redux";
   
-  const UpdateDepartment = ({ id,departmentName,setDepartmentDetails }) => {
-    const [nameOfDepartment, setNameOfDepartment] = useState("");
+  const AddCategory = ({ id,setCategoryData }) => {
+    const [categoryVal,setCategoryVal] = useState("")
+    // const [categoryData,setCategoryData]=useState(null)
     const { isOpen: defaultModalOpen, toggle: defaultModalToggle } = useToggle();
   
     const dispatch = useDispatch();
   
     //   const departmentList = useSelector((state) => state.DepartmentReducer.departmentList)
-  
-    const updateDepartmentById = async () => {
-      const reqObj = {
-        name: nameOfDepartment,
-      };
-      const res = await updateDepartment(id, reqObj);
-    //   if (res?.data?.message == "Department updated successfully.") {
-        getDepartmentList().then((res) => {
-          // if (res?.data?.results) {
-          //   const a = res.data.results;
-          //   a.map((obj) => {
-          //     if (obj.id == id) {
-          //       obj["name"] = nameOfDepartment;
-          //     }
-          //   });
-          // }
-          dispatch(setDepartmentList(res.data.results))
-          // useEffect(() => {
-            // }, []);
-        //   setCatData(res.data.categories);
-        });
-        getDepartmentDetails(id).then((res) => {
-          if (res?.data) {
-            setDepartmentDetails(res.data);
-          }
-        });
-    //   }
-      defaultModalToggle()
-    };
+    
+      const addCategory = async() => {
+        const reqObj = {
+          name:categoryVal,
+          department:id
+        }
+    
+        const res = await registerCategory(reqObj)
+    
+        setCategoryVal("")
+    
+        const detail = await getDepartmentDetails(id)
+        setCategoryData(detail.data.categories)
+        // setDepartmentList(currentVal =>{
+        //   currentVal['categories']=detail.data.categories
+        // })
+        // departmentList['categories'] = detail.data.categories
+        // console.log(departmentList)
+    
+        // setDepartmentList(departmentList)
+        defaultModalToggle()
+      }
     return (
       <>
-        <Button variant="de-primary" style={{marginLeft:'2px'}} size="md" onClick={defaultModalToggle}>
-          Edit Sector
+        <Button variant="de-primary" size="md" onClick={defaultModalToggle}>
+          Add Category
         </Button>
   
         <Modal
@@ -74,7 +69,7 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
         >
           <ModalHeader>
             <h6 className="modal-title m-0" id="exampleModalDefaultLabel">
-              Update Department
+              Add Category
             </h6>
             <button
               type="button"
@@ -93,9 +88,10 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
               <Col sm="10">
                 <FormControl
                   type="text"
-                  defaultValue={departmentName}
-                  id={id}
-                  onChange={(e) => setNameOfDepartment(e.target.value)}
+                //   defaultValue={}
+                value={categoryVal}
+                //   id={id}
+                onChange={(e)=>setCategoryVal(e.target.value)}
                 />
               </Col>
             </Row>
@@ -104,8 +100,8 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
             <Button variant="de-secondary" size="sm" onClick={defaultModalToggle}>
               Close
             </Button>
-            <Button onClick={updateDepartmentById} variant="de-primary" size="sm">
-              Update
+            <Button onClick={addCategory} variant="de-primary" size="sm">
+              Add Category
             </Button>
           </ModalFooter>
         </Modal>
@@ -113,5 +109,5 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
     );
   };
   
-  export default UpdateDepartment;
+  export default AddCategory;
   

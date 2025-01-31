@@ -1,5 +1,6 @@
 import { getDemandLettersList } from "@/api/actions";
 import { PageMetaData } from "@/components";
+import { date_convert } from "@/config/dateConverter";
 import DataTables from "@/pages/uikit/tables/DataTables";
 import { setDemandLetterList } from "@/store/actions/DemandLettersActions";
 import React, { useEffect } from "react";
@@ -14,7 +15,7 @@ const columnConfig = [
     // Cell: props => <a href="https://physically-calm-hermit.ngrok-free.app/complaints/">{"QWERTY"}</a>,
     // Cell: ({ row }) => (console.log('QQQQQQ',row))
     Cell: ({ row }) => (
-      <Link to={{ pathname: `/demandletters/${row.values.uuid}` }}>
+      <Link to={{ pathname: `/demandletters/${row.values.uuid}` }} style={{color:'blue', textDecoration:'underline'}}>
         {row.values.uuid}
       </Link>
     ),
@@ -34,6 +35,16 @@ const columnConfig = [
     accessor: "status",
     defaultCanSort: true,
   },
+  {
+		Header: 'Created At',
+		accessor: 'created_at',
+		defaultCanSort: true,
+    // Cell: ({ row }) => <Moment format='MM/DD/YYYY'></Moment>
+	},{
+		Header: 'Updated At',
+		accessor: 'updated_at',
+		defaultCanSort: true,
+	},
 ];
 
 const DemandLetter = () => {
@@ -46,6 +57,21 @@ const DemandLetter = () => {
     getDemandLettersList().then((res) => {
       // console.log(res)
       if (res?.data?.results) {
+        res.data.results.map((obj) => {
+              switch(obj.status){
+                case "rejected":
+                  obj.status = 'Rejected' 
+                case "in_progress":
+                  obj.status = 'In Progress' 
+                case "resolved":
+                  obj.status = 'Resolved'
+                case "registered":
+                  obj.status = 'Registered' 
+              }
+              const {d1,d2} = date_convert(obj.created_at,obj.updated_at) 
+              obj.created_at = d1
+              obj.updated_at = d2
+            })
         dispatch(setDemandLetterList(res.data.results));
       }
     });

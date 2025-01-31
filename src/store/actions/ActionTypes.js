@@ -7,3 +7,5 @@ export const SET_DEMAND_LETTER_LIST = 'Set Demand Letters List'
 export const SET_SUGGESTION_LIST = 'Set Suggestions List'
 
 export const SET_GEOCOMPLAINT_LIST = 'Set GeoComplaint List'
+
+export const SAVE_USER_INFO = 'Set User Info'

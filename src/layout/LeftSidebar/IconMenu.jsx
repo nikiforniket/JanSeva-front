@@ -48,7 +48,7 @@ const IconMenu = ({ menuItems, activeMenuItems }) => {
 					</Nav>
 				</SimpleBar>
 			</div>
-			<div className="pro-metrica-end">
+			{/* <div className="pro-metrica-end">
 				<Link to="" className="profile">
 					<img
 						src={user4}
@@ -56,7 +56,7 @@ const IconMenu = ({ menuItems, activeMenuItems }) => {
 						className="rounded-circle thumb-sm"
 					/>
 				</Link>
-			</div>
+			</div> */}
 		</div>
 	)
 }

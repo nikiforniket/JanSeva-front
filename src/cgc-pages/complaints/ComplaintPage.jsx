@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { customersDetails } from '../../pages/uikit/tables/data'
 import { useDispatch, useSelector } from 'react-redux'
 import { setComplaintList } from '@/store/actions/ComplaintActions'
+import { date_convert } from '@/config/dateConverter'
 
 const ComplaintPage = () => {
 
@@ -23,7 +24,7 @@ const ComplaintPage = () => {
 		defaultCanSort: true,
 		// Cell: props => <a href="https://physically-calm-hermit.ngrok-free.app/complaints/">{"QWERTY"}</a>,
 		// Cell: ({ row }) => (console.log('QQQQQQ',row))
-		Cell: ({ row }) => (<Link to={{ pathname: `/complaints/${row.values.uuid}` }}>{row.values.uuid}</Link>)
+		Cell: ({ row }) => (<Link to={{ pathname: `/complaints/${row.values.uuid}` }} style={{color:'blue', textDecoration:'underline'}}>{row.values.uuid}</Link>)
 	},
 	{
 		Header: 'Full Name',
@@ -68,7 +69,25 @@ const ComplaintPage = () => {
 
     getComplaintsList().then((res) => {
       if(res?.data?.results){
-        // setComplaintList(res?.data?.results)
+		res.data.results.map((obj) => {
+			switch(obj.status){
+				case "rejected":
+					obj.status = 'Rejected' 
+				case "in_progress":
+					obj.status = 'In Progress' 
+				case "reported":
+					obj.status = 'Reported' 
+				case "resolved":
+					obj.status = 'Resolved' 
+				case "report_acknowledged":
+					obj.status = "Report Acknowledged" 
+				case "registered":
+					obj.status = 'Registered' 
+			}
+			const {d1,d2} = date_convert(obj.created_at,obj.updated_at) 
+			obj.created_at = d1
+			obj.updated_at = d2
+		})
 		dispatch(setComplaintList(res.data.results))
       }
     })

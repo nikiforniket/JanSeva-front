@@ -15,6 +15,7 @@ import {
 } from "react-bootstrap";
 import { complaintDetailsFilterConfig } from "@/config/QuickFilters";
 import { toast } from "sonner";
+import { date_convert } from "@/config/dateConverter";
 
 const ComplaintDetailsPage = () => {
   const { id } = useParams();
@@ -24,7 +25,12 @@ const ComplaintDetailsPage = () => {
 
   useEffect(() => {
     getComplaintDetails(id).then((res) => {
-      setComplaintDetails(res.data);
+      if(res?.data){
+        const {d1,d2} = date_convert(res.data.created_at,res.data.updated_at)
+        res.data.created_at = d1
+        res.data.updated_at = d2
+        setComplaintDetails(res.data);
+      }
     });
   }, []);
 
@@ -67,32 +73,12 @@ const ComplaintDetailsPage = () => {
                               defaultValue={complaintDetails[each.id]}
                               id={each.id}
                               readOnly={!each.edit}
+                              disabled={!each.edit}
                             />
                           </Col>
                         </Row>
                       );
-                    }else if (each.type == "textarea") {
-						return (
-						  <Row className="mb-3">
-							<FormLabel
-							  htmlFor={each.id}
-							  className="col-sm-2 col-form-label text-end"
-							>
-							  {each.label}
-							</FormLabel>
-							<Col sm="10">
-							<p>{complaintDetails[each.id]}</p>
-							  {/* <FormControl
-								as="textArea"
-								defaultValue={complaintDetails[each.id]}
-								id={each.id}
-								readOnly={!each.edit}
-							  /> */}
-							</Col>
-						  </Row>
-						);
-					  }
-					 else if (each.type == "dropdown") {
+                    } else if (each.type == "textarea") {
                       return (
                         <Row className="mb-3">
                           <FormLabel
@@ -102,19 +88,13 @@ const ComplaintDetailsPage = () => {
                             {each.label}
                           </FormLabel>
                           <Col sm="10">
-                            <FormSelect
-								value={statusValue ? statusValue : complaintDetails[each.id]}
-                              id={each.id}
-                              onChange={(e) =>
-                                handleStatusChange(e.target.value)
-                              }
-                            >
-                              {each.options.map((opt, i) => {
-                                return (
-                                  <option value={opt.value}>{opt.label}</option>
-                                );
-                              })}
-                            </FormSelect>
+                            <p>{complaintDetails[each.id]}</p>
+                            {/* <FormControl
+								as="textArea"
+								defaultValue={complaintDetails[each.id]}
+								id={each.id}
+								readOnly={!each.edit}
+							  /> */}
                           </Col>
                         </Row>
                       );
@@ -127,13 +107,49 @@ const ComplaintDetailsPage = () => {
                     </Row>;
                   })}
                 </Col>
-              </Row>
-              <Row className="mb-3">
+                <Col lg='6'>
+                {complaintDetailsFilterConfig.fields.map((each) => {
+                  if (each.type == "dropdown") {
+                    return (
+                      <Row className="mb-3">
+                        <FormLabel
+                          htmlFor={each.id}
+                          className="col-sm-2 col-form-label text-end"
+                        >
+                          {each.label}
+                        </FormLabel>
+                        <Col sm="10">
+                          <FormSelect
+                            value={
+                              statusValue
+                                ? statusValue
+                                : complaintDetails[each.id]
+                            }
+                            id={each.id}
+                            onChange={(e) =>
+                              handleStatusChange(e.target.value)
+                            }
+                          >
+                            {each.options.map((opt, i) => {
+                              return (
+                                <option value={opt.value}>{opt.label}</option>
+                              );
+                            })}
+                          </FormSelect>
+                        </Col>
+                      </Row>
+                    );
+                  }
+                  })}
+                  <Row className="mb-3">
                 <Col></Col>
                 <Col sm="10">
-                  <Button onClick={updateStatus}>Save Status</Button>
+                  <Button onClick={updateStatus}>Update Status</Button>
                 </Col>
               </Row>
+                </Col>
+              </Row>
+              
             </CardBody>
           </Card>
         </Col>

@@ -186,7 +186,7 @@ const MainMenu = ({ menuItems }) => {
 	}, [activeMenu, menuItems])
 	return (
 		<div className="main-menu-inner">
-			<div className="topbar-left">
+			{/* <div className="topbar-left">
 				<Link to="/" className="logo">
 					<span>
 						<img
@@ -197,7 +197,7 @@ const MainMenu = ({ menuItems }) => {
 						<img src={logo} alt="logo-large" className="logo-lg logo-light" />
 					</span>
 				</Link>
-			</div>
+			</div> */}
 			<TabContent
 				as={SimpleBar}
 				style={{

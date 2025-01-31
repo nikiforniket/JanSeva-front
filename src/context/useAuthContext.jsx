@@ -23,7 +23,7 @@ export function AuthProvider({ children }) {
 		<AuthContext.Provider
 			value={{
 				user,
-				isAuthenticated: hasCookie(authSessionKey).refresh,
+				isAuthenticated: hasCookie(authSessionKey),
 				saveSession,
 				removeSession,
 			}}

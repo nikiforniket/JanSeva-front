@@ -6,6 +6,7 @@ import DefaultLayout from '@/layout/DefaultLayout'
 import { useAuthContext } from '@/context'
 const AllRoutes = (props) => {
 	const { isAuthenticated } = useAuthContext()
+	console.log("isAuthenticated",isAuthenticated)
 	return (
 		<Routes>
 			<Route>
@@ -23,14 +24,14 @@ const AllRoutes = (props) => {
 					<Route
 						path={route.path}
 						element={
-							// isAuthenticated === false ? (
-							// 	<Navigate
-							// 		to={{
-							// 			pathname: '/login',
-							// 			search: 'next=' + route.path,
-							// 		}}
-							// 	/>
-							// ) : 
+							isAuthenticated === false ? (
+								<Navigate
+									to={{
+										pathname: '/login',
+										search: 'next=' + route.path,
+									}}
+								/>
+							) : 
 							(
 								<VerticalLayout {...props}>{route.element}</VerticalLayout>
 							)

@@ -17,19 +17,19 @@ const DepartmentsPage = () => {
             Header: 'ID',
             accessor: 'id',
             defaultCanSort: true,
-            Cell: ({ row }) => (<Link to={{ pathname: `/departments/${row.values.id}` }}>{row.values.id}</Link>)
+            Cell: ({ row }) => (<Link to={{ pathname: `/departments/${row.values.id}` }} style={{color:'blue', textDecoration:'underline'}}>{row.values.id}</Link>)
         },
         {
             Header: 'Name',
             accessor: 'name',
-            defaultCanSort: true,
+            // defaultCanSort: false,
         },
-        {
-          Header: "",
-          accessor: "update",
-          defaultCanSort: true,
-          Cell: ({ row }) => <UpdateDepartment id={row?.original?.id} departmentName={row?.original?.name} />
-        }
+        // {
+        //   Header: "",
+        //   accessor: "update",
+        //   defaultCanSort: true,
+        //   Cell: ({ row }) => <UpdateDepartment id={row?.original?.id} departmentName={row?.original?.name} />
+        // }
     ]
 
     // const [departmentList,setDepartmentList] = useState([])
@@ -85,7 +85,7 @@ const DepartmentsPage = () => {
       >
         <ModalHeader>
           <h6 className="modal-title m-0" id="exampleModalDefaultLabel">
-            Add Department
+            Add Sector
           </h6>
           <button
             type="button"
@@ -99,7 +99,7 @@ const DepartmentsPage = () => {
             //   htmlFor={id}
               className="col-sm-2 col-form-label text-end"
             >
-              Department Name
+              Sector Name
             </FormLabel>
             <Col sm="10">
               <FormControl

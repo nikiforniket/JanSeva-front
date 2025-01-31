@@ -5,13 +5,15 @@ import DepartmentReducer from "./reducers/DepartmentReducer.jsx";
 import DemandLetterReducer from "./reducers/DemandLetterReducer.jsx";
 import SuggestionReducer from "./reducers/SuggestionReducer.jsx";
 import GeoComplaintReducer from "./reducers/GeoComplaintReducer.jsx";
+import GeneralReducer from "./reducers/GeneralReducer.jsx";
 
 export const rootReducer = combineReducers({
     ComplaintReducer: ComplaintReducer,
     DepartmentReducer: DepartmentReducer,
     DemandLetterReducer: DemandLetterReducer,
     SuggestionReducer:SuggestionReducer,
-    GeoComplaintReducer:GeoComplaintReducer
+    GeoComplaintReducer:GeoComplaintReducer,
+    GeneralReducer:GeneralReducer
 })
 
 const store = createStore(rootReducer,compose(applyMiddleware(thunk)))
