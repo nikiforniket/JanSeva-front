@@ -20,6 +20,7 @@ import { geoComplaintDetailsFilterConfig } from "@/config/QuickFilters";
 import Gallery from "@/pages/other-pages/Gallery";
 import { PageMetaData } from "@/components";
 import { date_convert } from "@/config/dateConverter";
+import { toast } from "sonner";
 
 const GeoComplaintDetailsPage = () => {
   const { id } = useParams();

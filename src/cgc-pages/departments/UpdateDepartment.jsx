@@ -19,9 +19,10 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
     Row,
   } from "react-bootstrap";
   import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
   
   const UpdateDepartment = ({ id,departmentName,setDepartmentDetails }) => {
-    const [nameOfDepartment, setNameOfDepartment] = useState("");
+    const [nameOfDepartment, setNameOfDepartment] = useState(departmentName);
     const { isOpen: defaultModalOpen, toggle: defaultModalToggle } = useToggle();
   
     const dispatch = useDispatch();
@@ -35,18 +36,7 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
       const res = await updateDepartment(id, reqObj);
     //   if (res?.data?.message == "Department updated successfully.") {
         getDepartmentList().then((res) => {
-          // if (res?.data?.results) {
-          //   const a = res.data.results;
-          //   a.map((obj) => {
-          //     if (obj.id == id) {
-          //       obj["name"] = nameOfDepartment;
-          //     }
-          //   });
-          // }
           dispatch(setDepartmentList(res.data.results))
-          // useEffect(() => {
-            // }, []);
-        //   setCatData(res.data.categories);
         });
         getDepartmentDetails(id).then((res) => {
           if (res?.data) {
@@ -55,6 +45,10 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
         });
     //   }
       defaultModalToggle()
+      toast.success("Successfully logged in. Redirecting....", {
+        position: "top-right",
+        duration: 3000,
+      });
     };
     return (
       <>
@@ -104,7 +98,7 @@ import { setDepartmentList } from "@/store/actions/DepartmentActions";
             <Button variant="de-secondary" size="sm" onClick={defaultModalToggle}>
               Close
             </Button>
-            <Button onClick={updateDepartmentById} variant="de-primary" size="sm">
+            <Button onClick={updateDepartmentById} variant="de-primary" size="sm" disabled={departmentName==nameOfDepartment}>
               Update
             </Button>
           </ModalFooter>

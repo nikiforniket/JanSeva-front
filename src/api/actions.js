@@ -67,7 +67,7 @@ export const updateComplaintDetails = async (id,obj) => {
   return res
 }
 
-// Departments and Category API
+// Sectors API
 export const getDepartmentList = async () => {
   const res = await HttpClient.get(`${urlHostname}/departments`)
   return res
@@ -144,5 +144,32 @@ export const getGeoComplaintDetails = async(id) => {
 
 export const updateGeoComplaintDetails = async(id,obj) => {
   const res = await HttpClient.patch(`${urlHostname}/geocomplaints/${id}/`,obj)
+  return res
+}
+
+// Scheme api's
+
+export const getSchemeList = async() => {
+  const res = await HttpClient.get(`${urlHostname}/schemes`)
+  return res
+}
+
+export const registerScheme = async(obj) => {
+  const res = await HttpClient.post(`${urlHostname}/schemes/register/`,obj)
+  return res
+}
+
+export const getSectorForScheme = async() => {
+  const res = await HttpClient.get(`${urlHostname}/departments/select/`)
+  return res
+}
+
+export const getSchemeDetails = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/schemes/${id}`)
+  return res
+}
+
+export const updateSchemeDetails = async(id,obj) => {
+  const res = await HttpClient.put(`${urlHostname}/schemes/${id}/`,obj)
   return res
 }

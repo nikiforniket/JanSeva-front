@@ -6,7 +6,6 @@ import {
 	DropdownToggle,
 	Image,
 } from 'react-bootstrap'
-import user4 from '@/assets/images/users/user-4.jpg'
 import { useAuthContext } from '@/context'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -14,6 +13,8 @@ const ProfileDropdown = () => {
 	const { removeSession } = useAuthContext()
 	const navigate = useNavigate()
 	const userInfo = useSelector((state) => state.GeneralReducer.userInfo)
+	console.log("&&",userInfo);
+	
 	const logout = () => {
 		removeSession()
 		navigate('/login')

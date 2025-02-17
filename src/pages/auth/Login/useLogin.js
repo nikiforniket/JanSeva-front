@@ -36,7 +36,7 @@ export default function useLogin() {
     },
   });
   // const redirectUrl = useMemo(() => (location.state?.from.pathname, location.pathname ?? "/"), [location.state]);
-  const redirectUrl = searchParams.get("next") ?? "/departments"; // here we will add our home page in else part and in if part other url will come from which we redirected
+  const redirectUrl = searchParams.get("next") ?? "/sectors"; // here we will add our home page in else part and in if part other url will come from which we redirected
   const login = handleSubmit(async function (values) {
     setLoading(true);
     try {

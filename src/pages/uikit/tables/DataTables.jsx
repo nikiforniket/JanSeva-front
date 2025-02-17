@@ -95,6 +95,7 @@ const DataTables = (props) => {
 								pageSize={5}
 								sizePerPageList={sizePerPageList}
 								isSortable={true}
+								depFlag={props?.depFlag}
 							/>
 						</CardBody>
 					</Card>

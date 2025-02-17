@@ -13,6 +13,8 @@ const SuggestionPage = lazy(() => import('@/cgc-pages/Suggestions/SuggestionPage
 const SuggestionDetails = lazy(() => import('@/cgc-pages/Suggestions/SuggestionDetails'))
 const GeoComplaintsPage = lazy(() => import('@/cgc-pages/geo-complaints/GeoComplaintsPage'))
 const GeoComplaintDetailsPage = lazy(() => import('@/cgc-pages/geo-complaints/GeoComplaintDetailsPage'))
+const SchemePage = lazy(() => import('@/cgc-pages/schemes/SchemePage'))
+const SchemeDetails = lazy(() => import('@/cgc-pages/schemes/SchemeDetails'))
 
 const appsRoutes = [
     {
@@ -26,7 +28,7 @@ const appsRoutes = [
         element: <ComplaintPage/>
     },
     {
-        path : '/departments',
+        path : '/sectors',
         name : 'DepartmentsPage',
         element: <DepartmentsPage/>
     },
@@ -69,6 +71,16 @@ const appsRoutes = [
         path : '/geocomplaints/:id',
         name : 'GeoComplaintDetails',
         element: <GeoComplaintDetailsPage/>
+    },
+    {
+        path : '/schemes',
+        name : 'SchemePage',
+        element: <SchemePage/>
+    },
+    {
+        path : '/schemes/:id',
+        name : 'SchemeDetail',
+        element: <SchemeDetails/>
     },
 ]
 

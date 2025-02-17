@@ -24,7 +24,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 const ActionDropdown = ({ id, categoryName, setCatData, depId }) => {
-  const [nameOfCategory, setNameOfCategory] = useState("");
+  const [nameOfCategory, setNameOfCategory] = useState(categoryName);
   const { isOpen: defaultModalOpen, toggle: defaultModalToggle } = useToggle();
 
   const dispatch = useDispatch();
@@ -116,7 +116,7 @@ const ActionDropdown = ({ id, categoryName, setCatData, depId }) => {
           <Button variant="de-secondary" size="sm" onClick={defaultModalToggle}>
             Close
           </Button>
-          <Button onClick={updateCategoryById} variant="de-primary" size="sm">
+          <Button onClick={updateCategoryById} variant="de-primary" size="sm" disabled={categoryName==nameOfCategory}>
             Update
           </Button>
         </ModalFooter>

@@ -6,7 +6,6 @@ import DefaultLayout from '@/layout/DefaultLayout'
 import { useAuthContext } from '@/context'
 const AllRoutes = (props) => {
 	const { isAuthenticated } = useAuthContext()
-	console.log("isAuthenticated",isAuthenticated)
 	return (
 		<Routes>
 			<Route>

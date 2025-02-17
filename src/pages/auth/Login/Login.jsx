@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <>
       <PageMetaData title="Login" />
-      {/* {isAuthenticated && <Navigate to={redirectUrl} replace />} */}
+      {isAuthenticated && <Navigate to={redirectUrl} replace />}
       <AuthLayout>
         <Card>
           <CardBody className="p-0 auth-header-box">
@@ -50,7 +50,7 @@ const Login = () => {
                 control={control}
                 placeholder="Enter password"
               />
-              <Row className="form-group mt-3">
+              {/* <Row className="form-group mt-3">
                 <Col sm={6}>
                   <div className="form-check form-switch form-switch-success">
                     <input
@@ -71,7 +71,7 @@ const Login = () => {
                     <i className="dripicons-lock" /> Forgot password?
                   </Link>
                 </Col>
-              </Row>
+              </Row> */}
               <Row className="form-group mb-0">
                 <Col xs={12}>
                   <div className="d-grid mt-3">

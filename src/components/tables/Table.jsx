@@ -86,6 +86,12 @@ const Table = (props) => {
 			data: props['data'],
 			initialState: {
 				pageSize: props['pageSize'] || 10,
+				sortBy: [
+					{
+						id: 'id',
+						desc: false
+					}
+				]
 			},
 		},
 		'useGlobalFilter' in otherProps && otherProps['useGlobalFilter'],

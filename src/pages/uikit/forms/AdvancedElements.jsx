@@ -17,6 +17,32 @@ import Flatpickr from 'react-flatpickr'
 
 //style
 import 'flatpickr/dist/themes/material_blue.css'
+
+export const Select = () => {
+	<Col md="4">
+		{/* <label className="mb-3">Default Select</label> */}
+		<Select
+			defaultValue={{
+				value: 'value-1',
+				label: 'Value 1',
+			}}
+			options={[
+				{
+					value: 'value-1',
+					label: 'Value 1',
+				},
+				{
+					value: 'value-2',
+					label: 'Value 2',
+				},
+				{
+					value: 'value-3',
+					label: 'Value 3',
+				},
+			]}
+		/>
+	</Col>
+}
 const ReactSelectElement = () => {
 	return (
 		<Row>

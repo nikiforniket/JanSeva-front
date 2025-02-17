@@ -8,7 +8,7 @@ const TWO_COl_MENU_ITEMS = [
 			{
 				key: 'Departments',
 				label: 'Sectors',
-				url: '/departments',
+				url: '/sectors',
 				parentKey: 'Complaint & Grievance Cell',
 			},
 			{
@@ -34,6 +34,38 @@ const TWO_COl_MENU_ITEMS = [
 				label: 'Demand',
 				url: '/demandletters',
 				parentKey: 'Complaint & Grievance Cell',
+			}
+		],
+	},
+	{
+		key: 'Achievements',
+		icon: 'smart-home',
+		label: 'Achievements',
+		isTitle: true,
+		children: [
+			{
+				key: 'Departments',
+				label: 'Sectors',
+				url: '/sectors',
+				parentKey: 'Achievements',
+			},
+			{
+				key: 'Fund',
+				label: 'Fund',
+				url: '/fund',
+				parentKey: 'Achievements',
+			},
+			{
+				key: 'Scheme',
+				label: 'Scheme',
+				url: '/schemes',
+				parentKey: 'Achievements',
+			},
+			{
+				key: 'Work Done',
+				label: 'Work Done',
+				url: '/workdone',
+				parentKey: 'Achievements',
 			}
 		],
 	},
