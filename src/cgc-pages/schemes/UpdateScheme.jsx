@@ -30,7 +30,7 @@ const UpdateScheme = ({id,schemeDetails,setSchemeDetails}) => {
                   };
                   a.push(b);
                   if(obj.id==schemeDetails['sector']){
-                    setDefaultValSecDD(b)
+                    setDefaultValSecDD([b])
                   }
                 });
                 setSectorDD(a);

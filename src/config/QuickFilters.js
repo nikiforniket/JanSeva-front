@@ -412,3 +412,133 @@ export const schemeDetailsConfig = {
     },
   ],
 };
+
+export const fundDetailsFilterConfig = {
+  fields: [
+    {
+      label: "Id",
+      id: "id",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Representative",
+      id: "representative",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Year",
+      id: "year",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Amount",
+      id: "amount",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    // {
+    //   label: "Is Deleted",
+    //   id: "is_deleted",
+    //   type: "input",
+    //   options: [],
+    //   edit: false,
+    // },
+    {
+      label: "Description",
+      id: "description",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Created At",
+      id: "created_at",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Updated At",
+      id: "updated_at",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+  ],
+};
+
+export const allocationDetailsFilterConfig = {
+  fields: [
+    {
+      label: "Id",
+      id: "id",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Fund",
+      id: "fund",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Is Deleted",
+      id: "is_deleted",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Amount",
+      id: "amount",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Month Start",
+      id: "month_start",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Month End",
+      id: "month_end",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Description",
+      id: "description",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+    
+    {
+      label: "Created At",
+      id: "created_at",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Updated At",
+      id: "updated_at",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+  ],
+};

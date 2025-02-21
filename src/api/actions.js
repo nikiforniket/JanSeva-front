@@ -5,7 +5,7 @@ import HttpClient from "@/common/api/httpClient";
 
 // axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
-const urlHostname = 'https://physically-calm-hermit.ngrok-free.app'
+const urlHostname = 'https://amazed-gopher-singularly.ngrok-free.app'
 
 axios.interceptors.request.use(
   (config) => {
@@ -171,5 +171,52 @@ export const getSchemeDetails = async(id) => {
 
 export const updateSchemeDetails = async(id,obj) => {
   const res = await HttpClient.put(`${urlHostname}/schemes/${id}/`,obj)
+  return res
+}
+
+// Fund API's
+
+export const getFundList = async() => {
+  const res = await HttpClient.get(`${urlHostname}/funds/`)
+  return res
+}
+
+export const getFundDetails = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/funds/${id}/`)
+  return res
+}
+
+export const registerFund = async(obj) => {
+  const res = await HttpClient.post(`${urlHostname}/funds/register/`,obj)
+  return res
+}
+
+export const getRepresentativeForFund = async() => {
+  const res = await HttpClient.get(`${urlHostname}/representatives/select/`)
+  return res
+}
+
+export const getAllocationList = async(id) => {
+  const res = HttpClient.get(`${urlHostname}/allocations/?fund=${id}`)
+  return res
+}
+
+export const getAllocationDetails = async(id) => {
+  const res = HttpClient.get(`${urlHostname}/allocations/${id}/`)
+  return res
+}
+
+export const updateAllocation = async(id,obj) => {
+  const res = HttpClient.put(`${urlHostname}/allocations/${id}/`,obj)
+  return res
+}
+
+export const registerAllocation = async(obj) => {
+  const res = HttpClient.post(`${urlHostname}/allocations/register/`,obj)
+  return res
+}
+
+export const updateFund = async(id,obj) => {
+  const res = HttpClient.put(`${urlHostname}/funds/${id}/`,obj)
   return res
 }

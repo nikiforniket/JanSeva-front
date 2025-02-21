@@ -11,3 +11,7 @@ export const SET_GEOCOMPLAINT_LIST = 'Set GeoComplaint List'
 export const SAVE_USER_INFO = 'Set User Info'
 
 export const SET_SCHEME_LIST = 'Set Scheme List'
+
+export const SET_FUND_LIST = 'Set Fund List'
+
+export const SET_ALLOCATION_LIST = 'Set Allocation List'

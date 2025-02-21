@@ -49,7 +49,6 @@ const AddCategory = ({ id, setCategoryData }) => {
       });
       defaultModalToggle();
     } catch (error) {
-      console.log(error)
       const errMsg = error.response.data.errors.non_field_errors[0];
       toast.error(errMsg, {
         position: "top-right",
