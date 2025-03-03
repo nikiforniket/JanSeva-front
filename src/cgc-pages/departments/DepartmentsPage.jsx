@@ -107,7 +107,7 @@ const DepartmentsPage = () => {
           title={`Sectors`}
           columnConfig={columnConfig}
           rowData={departmentList}
-          depFlag={true}
+          isSearchable={true}
         />
       )}
       <Modal

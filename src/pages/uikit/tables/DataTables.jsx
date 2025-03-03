@@ -95,7 +95,7 @@ const DataTables = (props) => {
 								pageSize={5}
 								sizePerPageList={sizePerPageList}
 								isSortable={true}
-								depFlag={props?.depFlag}
+								isSearchable={props?.isSearchable}
 							/>
 						</CardBody>
 					</Card>

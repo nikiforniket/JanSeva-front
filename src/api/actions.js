@@ -197,26 +197,80 @@ export const getRepresentativeForFund = async() => {
 }
 
 export const getAllocationList = async(id) => {
-  const res = HttpClient.get(`${urlHostname}/allocations/?fund=${id}`)
+  const res = await HttpClient.get(`${urlHostname}/allocations/?fund=${id}`)
   return res
 }
 
 export const getAllocationDetails = async(id) => {
-  const res = HttpClient.get(`${urlHostname}/allocations/${id}/`)
+  const res = await HttpClient.get(`${urlHostname}/allocations/${id}/`)
   return res
 }
 
 export const updateAllocation = async(id,obj) => {
-  const res = HttpClient.put(`${urlHostname}/allocations/${id}/`,obj)
+  const res = await HttpClient.put(`${urlHostname}/allocations/${id}/`,obj)
   return res
 }
 
 export const registerAllocation = async(obj) => {
-  const res = HttpClient.post(`${urlHostname}/allocations/register/`,obj)
+  const res = await HttpClient.post(`${urlHostname}/allocations/register/`,obj)
   return res
 }
 
 export const updateFund = async(id,obj) => {
-  const res = HttpClient.put(`${urlHostname}/funds/${id}/`,obj)
+  const res = await HttpClient.put(`${urlHostname}/funds/${id}/`,obj)
+  return res
+}
+
+// work-done APIs
+
+export const getWorkDoneList = async () => {
+  const res = await HttpClient.get(`${urlHostname}/works-done/`)
+  return res
+}
+
+export const dd1 = async() => {
+  const res = await HttpClient.get(`${urlHostname}/local-bodies/select/`)
+  return res
+}
+
+export const dd2 = async(val) => {
+  const res = await HttpClient.get(`${urlHostname}/sub-local-bodies/select/?local_body=${val}`)
+  return res
+}
+
+export const selectFundForWorkDone = async(year) => {
+  const res = await HttpClient.get(`${urlHostname}/allocations/select/?year=${year}`)
+  return res
+}
+
+export const registerWorkDone = async(obj) => {
+  const res = await HttpClient.post(`${urlHostname}/works-done/register/`,obj)
+  return res
+}
+
+export const workDoneDetail = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/works-done/${id}/`)
+  return res
+}
+
+export const updateWorkDone = async(id,obj) => {
+  const res = await HttpClient.put(`${urlHostname}/works-done/${id}/`,obj)
+  return res
+}
+
+export const getSchemeDDOpt = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/schemes/select/?sector=${id}`)
+  return res
+}
+
+// Achievements
+
+export const getAchievementList = async() => {
+  const res = await HttpClient.get(`${urlHostname}/works-done/?is_achievement=true`)
+  return res
+}
+
+export const getNews = async() => {
+  const res = await HttpClient.get(`${urlHostname}/flash-news/`)
   return res
 }

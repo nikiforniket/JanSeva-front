@@ -542,3 +542,111 @@ export const allocationDetailsFilterConfig = {
     },
   ],
 };
+
+export const workDetailsFilterConfig = {
+  fields: [
+    {
+      label: "Id",
+      id: "id",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Fund",
+      id: "fund",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Amount",
+      id: "amount",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Location",
+      id: "location",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    // {
+    //   label: "Scheme",
+    //   id: "scheme",
+    //   type: "input",
+    //   options: [],
+    //   edit: false,
+    // },
+    {
+      label: "Year",
+      id: "year",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Description",
+      id: "description",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+  ],
+};
+
+export const achievementDetailsConfig = {
+  fields: [
+    {
+      label: "Id",
+      id: "id",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    // {
+    //   label: "Fund",
+    //   id: "fund",
+    //   type: "input",
+    //   options: [],
+    //   edit: false,
+    // },
+    {
+      label: "Amount",
+      id: "amount",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Location",
+      id: "location",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Scheme",
+      id: "scheme",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Year",
+      id: "year",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      label: "Description",
+      id: "description",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+  ],
+};

@@ -15,3 +15,13 @@ export const SET_SCHEME_LIST = 'Set Scheme List'
 export const SET_FUND_LIST = 'Set Fund List'
 
 export const SET_ALLOCATION_LIST = 'Set Allocation List'
+
+export const SET_WORK_DONE_LIST = 'Set Work Done List'
+
+export const SET_LOCATION_DD_OPT = 'Set Location dropdown option for work done add and update'
+
+export const SET_SUB_LOCATION_DD_OPT = 'Set subLocation dropdown option for work done add and update'
+
+export const SET_FUND_DD_OPT = 'Set fund dropdown options for work done add and update'
+
+export const SET_ACH_LIST = 'Set Achievement List'

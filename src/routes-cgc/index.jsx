@@ -18,6 +18,11 @@ const SchemeDetails = lazy(() => import('@/cgc-pages/schemes/SchemeDetails'))
 const FundPage = lazy(() => import('@/cgc-pages/funds/FundPage'))
 const FundDetailsPage = lazy(() => import('@/cgc-pages/funds/FundDetailsPage'))
 const AllocationDetailsPage = lazy(() => import('@/cgc-pages/funds/AllocationDetailsPage'))
+const WorkDonePage = lazy(() => import('@/cgc-pages/work-done/WorkDonePage'))
+const WorkDetailPage = lazy(() => import('@/cgc-pages/work-done/WorkDetailPage'))
+const AchievementPage = lazy(() => import('@/cgc-pages/achievements/AchievementPage'))
+const AchievementDetailPage = lazy(() => import('@/cgc-pages/achievements/AchievementDetailPage'))
+const NewsPage = lazy(() => import('@/cgc-pages/news/NewsPage'))
 
 const appsRoutes = [
     {
@@ -99,6 +104,31 @@ const appsRoutes = [
         path : '/allocations/:id',
         name : 'AllocationDetailsPage',
         element: <AllocationDetailsPage/>
+    },
+    {
+        path : '/workdone',
+        name : 'WorkDonePage',
+        element: <WorkDonePage/>
+    },
+    {
+        path : '/workdone/:id',
+        name : 'WorkDetailPage',
+        element: <WorkDetailPage/>
+    },
+    {
+        path : '/achievement',
+        name : 'Achievement',
+        element: <AchievementPage/>
+    },
+    {
+        path : '/achievement/:id',
+        name : 'Achievement',
+        element: <AchievementDetailPage/>
+    },
+    {
+        path : '/news',
+        name : 'NewsPage',
+        element: <NewsPage/>
     },
 ]
 

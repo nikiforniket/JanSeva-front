@@ -66,7 +66,19 @@ const TWO_COl_MENU_ITEMS = [
 				label: 'Work Done',
 				url: '/workdone',
 				parentKey: 'Achievements',
-			}
+			},
+			{
+				key: 'Achievement',
+				label: 'Achievements',
+				url: '/achievement',
+				parentKey: 'Achievements',
+			},
+			{
+				key: 'News',
+				label: 'News',
+				url: '/news',
+				parentKey: 'Achievements',
+			},
 		],
 	},
 	// {
