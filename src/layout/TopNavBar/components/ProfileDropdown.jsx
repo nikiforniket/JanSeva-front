@@ -12,8 +12,8 @@ import { useSelector } from 'react-redux'
 const ProfileDropdown = () => {
 	const { removeSession } = useAuthContext()
 	const navigate = useNavigate()
-	const userInfo = useSelector((state) => state.GeneralReducer.userInfo)
-	console.log("&&",userInfo);
+	// const userInfo = useSelector((state) => state.GeneralReducer.userInfo)
+	const userInfo = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : ''
 	
 	const logout = () => {
 		removeSession()

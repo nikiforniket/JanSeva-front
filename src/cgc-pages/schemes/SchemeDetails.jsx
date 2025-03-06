@@ -39,8 +39,11 @@ const SchemeDetails = () => {
       <Row>
         <Col lg="12">
           <Card className="m-2">
-            <CardHeader>
+            <CardHeader style={{display:'flex', alignItems:'center',justifyContent:'space-between'}}>
               <CardTitle>Scheme Details</CardTitle>
+              {schemeDetails && (
+                    <UpdateScheme id={id} schemeDetails={schemeDetails} setSchemeDetails={setSchemeDetails} />
+                )}
             </CardHeader>
             <CardBody>
               <Row>
@@ -89,11 +92,9 @@ const SchemeDetails = () => {
                     }
                   })}
                 </Col>
-                <Col lg="6">
-                {schemeDetails && (
-                    <UpdateScheme id={id} schemeDetails={schemeDetails} setSchemeDetails={setSchemeDetails} />
-                )}
-                </Col>
+                {/* <Col lg="6">
+                
+                </Col> */}
               </Row>
             </CardBody>
           </Card>

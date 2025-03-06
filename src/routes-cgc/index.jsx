@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 
-const HomePage = lazy(() => import('@/cgc-pages/HomePage.jsx'))
+const Dashboard = lazy(() => import('@/cgc-pages/dashboard/Dashboard.jsx'))
 const Login = lazy(() => import('@/pages/auth/Login/Login'))
 const ComplaintPage = lazy(() => import('@/cgc-pages/complaints/ComplaintPage.jsx'))
 const DepartmentsPage = lazy(() => import('@/cgc-pages/departments/DepartmentsPage'))
@@ -23,12 +23,13 @@ const WorkDetailPage = lazy(() => import('@/cgc-pages/work-done/WorkDetailPage')
 const AchievementPage = lazy(() => import('@/cgc-pages/achievements/AchievementPage'))
 const AchievementDetailPage = lazy(() => import('@/cgc-pages/achievements/AchievementDetailPage'))
 const NewsPage = lazy(() => import('@/cgc-pages/news/NewsPage'))
+const NewsDetailPage = lazy(() => import('@/cgc-pages/news/NewsDetailPage'))
 
 const appsRoutes = [
     {
         path : '/',
-        name : 'HomePage',
-        element: <HomePage/>
+        name : 'Dashboard',
+        element: <Dashboard/>
     },
     {
         path : '/complaints',
@@ -129,6 +130,11 @@ const appsRoutes = [
         path : '/news',
         name : 'NewsPage',
         element: <NewsPage/>
+    },
+    {
+        path : '/news/:id',
+        name : 'NewsDetailPage',
+        element: <NewsDetailPage/>
     },
 ]
 

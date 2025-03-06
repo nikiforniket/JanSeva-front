@@ -79,16 +79,22 @@ const GeoComplaintsPage = () => {
           switch (obj.status) {
             case "registered":
               obj.status = "Registered";
+              break;
             case "in_progress":
               obj.status = "In Progress";
+              break;
             case "reported":
               obj.status = "Reported";
+              break;
             case "rejected":
               obj.status = "Rejected";
+              break;
             case "resolved":
               obj.status = "Resolved";
+              break;
             case "report_acknowledged":
               obj.status = "Report Acknowledged";
+              break;
           }
           const { d1, d2 } = date_convert(obj.created_at, obj.updated_at);
           obj.created_at = d1;

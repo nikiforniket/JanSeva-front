@@ -12,7 +12,6 @@ const setYearDDOpt = () => {
         b.push(a)
         START_YEAR = START_YEAR + 1
     }
-    console.log(b)
     return b
 }
 

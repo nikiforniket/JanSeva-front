@@ -650,3 +650,43 @@ export const achievementDetailsConfig = {
     },
   ],
 };
+
+export const newsDetailsConfig = {
+  fields: [
+    {
+      label: "Id",
+      id: "id",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "short_title",
+      label: "Short Title",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "short_content",
+      label: "Short Content",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "status",
+      label: "Status",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "updated_at",
+      label: "Updated At",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+  ],
+};

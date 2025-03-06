@@ -60,13 +60,17 @@ const DemandLetter = () => {
         res.data.results.map((obj) => {
               switch(obj.status){
                 case "rejected":
-                  obj.status = 'Rejected' 
+                  obj.status = 'Rejected'
+                  break; 
                 case "in_progress":
                   obj.status = 'In Progress' 
+                  break;
                 case "resolved":
                   obj.status = 'Resolved'
+                  break;
                 case "registered":
                   obj.status = 'Registered' 
+                  break;
               }
               const {d1,d2} = date_convert(obj.created_at,obj.updated_at) 
               obj.created_at = d1

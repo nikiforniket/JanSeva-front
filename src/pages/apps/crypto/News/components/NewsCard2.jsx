@@ -1,6 +1,6 @@
 import { Card, CardBody, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-const NewsCard2 = ({ description,image, variant, title }) => {
+const NewsCard2 = ({ description,image, variant, title, id }) => {
 	return (
 		<Card>
 			<CardBody>
@@ -14,7 +14,7 @@ const NewsCard2 = ({ description,image, variant, title }) => {
 						by <Link to="">admin</Link>
 					</li>
 				</ul> */}
-				<Link to="" className="h4 mt-2">
+				<Link to={{ pathname: `/news/${id}` }} style={{ color: "blue", textDecoration: "underline" }} className="h4 mt-2">
 					{title}
 				</Link>
 				<p className="text-muted mt-2">

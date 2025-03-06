@@ -10,13 +10,14 @@ export function useAuthContext() {
 }
 export const authSessionKey = '_CGC_AUTH_'
 export function AuthProvider({ children }) {
-	const [user, setUser] = useState(undefined)
+const [user, setUser] = useState(undefined)
 	const saveSession = (user) => {
 		setCookie(authSessionKey, JSON.stringify(user))
 		setUser(user)
 	}
 	const removeSession = () => {
 		deleteCookie(authSessionKey)
+		localStorage.removeItem("userInfo")
 		setUser(undefined)
 	}
 	return (

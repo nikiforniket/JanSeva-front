@@ -166,12 +166,6 @@ const WorkDonePage = () => {
         dispatch(setLocationDDOpt(a));
       }
     });
-    getSchemeDDOpt().then((res) => {
-
-    })
-    getSectorForScheme().then((res) => {
-
-    })
   }, []);
 
   const handleAddWorkDone = async () => {
@@ -387,7 +381,8 @@ const WorkDonePage = () => {
             </FormLabel>
             <Col sm="10">
               <FormControl
-                type="text"
+              as="textarea"
+              rows={7}
                 // value={}
                 // id={}
                 onChange={(e) =>

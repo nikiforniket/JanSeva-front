@@ -231,7 +231,8 @@ const FundPage = () => {
             </FormLabel>
             <Col sm="10">
               <FormControl
-                type="text"
+              as="textarea"
+              rows={7}
                 // value={departmentName}
                 // id={}
                 onChange={(e) =>

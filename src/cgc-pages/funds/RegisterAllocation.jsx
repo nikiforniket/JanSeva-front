@@ -18,7 +18,7 @@ import { setAllocationList } from "@/store/actions/GeneralActions";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
-const RegisterAllocation = ({ id }) => {
+const RegisterAllocation = ({ id,fundDetail }) => {
     const dispatch = useDispatch()
   const { isOpen: defaultModalOpen, toggle: defaultModalToggle } = useToggle();
   const monthObj = {
@@ -90,7 +90,7 @@ const RegisterAllocation = ({ id }) => {
     month_start: "",
     month_end: "",
     description: "",
-    fund: "",
+    fund: fundDetail.id,
   });
 
   const handleAddAllocation = async() => {
@@ -162,7 +162,7 @@ const RegisterAllocation = ({ id }) => {
               />
             </Col>
           </Row>
-          <Row className="mb-3">
+          {/* <Row className="mb-3">
             <FormLabel
               //   htmlFor={id}
               className="col-sm-2 col-form-label text-end"
@@ -180,7 +180,7 @@ const RegisterAllocation = ({ id }) => {
                 }
               />
             </Col>
-          </Row>
+          </Row> */}
           <Row className="mb-3">
             <FormLabel
               //   htmlFor={id}
@@ -234,7 +234,8 @@ const RegisterAllocation = ({ id }) => {
             </FormLabel>
             <Col sm="10">
               <FormControl
-                type="textarea"
+                as="textarea"
+                rows={7}
                 style={{}}
                 // defaultValue={allocationDetails["description"]}
                 // value={departmentName}

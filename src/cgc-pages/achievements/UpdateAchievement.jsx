@@ -317,7 +317,8 @@ const UpdateAchievement = ({ workDetails, setWorkDetails }) => {
             </FormLabel>
             <Col sm="10">
               <FormControl
-                type="text"
+              as="textarea"
+              rows={7}
                 defaultValue={workDetails["description"]}
                 value={reqBody["description"]}
                 // value={}

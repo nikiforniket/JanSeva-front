@@ -60,7 +60,8 @@ export default function useLogin() {
           position: "top-right",
           duration: 3000,
         });
-        dispatch(saveUserInfo(values.phone_number))
+        // dispatch(saveUserInfo(values.phone_number))
+        localStorage.setItem("userInfo",JSON.stringify(values.phone_number));
         navigate(redirectUrl);
       }
     } catch (e) {

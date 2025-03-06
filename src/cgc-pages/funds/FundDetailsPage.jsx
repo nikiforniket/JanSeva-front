@@ -86,19 +86,19 @@ const FundDetailsPage = () => {
   ];
 
   const monthObj = {
-    1:'January',
-    2:'February',
-    3:'March',
-    4:'April',
-    5:'May',
-    6:'June',
-    7:'July',
-    8:'August',
-    9:'September',
-    10:'October',
-    11:'November',
-    12:'December',
-  }
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December",
+  };
 
   useEffect(() => {
     getFundDetails(id).then((res) => {
@@ -119,8 +119,8 @@ const FundDetailsPage = () => {
           const { d1, d2 } = date_convert(obj.created_at, obj.updated_at);
           obj.created_at = d1;
           obj.updated_at = d2;
-          obj.month_start = monthObj[obj.month_start]
-          obj.month_end = monthObj[obj.month_end]
+          obj.month_start = monthObj[obj.month_start];
+          obj.month_end = monthObj[obj.month_end];
         });
         dispatch(setAllocationList(res.data));
       }
@@ -131,8 +131,21 @@ const FundDetailsPage = () => {
       <Row>
         <Col lg="12">
           <Card className="m-2">
-            <CardHeader>
+            <CardHeader
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
               <CardTitle>Fund Details</CardTitle>
+              {fundDetail && (
+                <UpdateFund
+                  id={id}
+                  fundDetail={fundDetail}
+                  setFundDetail={setFundDetail}
+                />
+              )}
             </CardHeader>
             <CardBody>
               <Row>
@@ -187,8 +200,8 @@ const FundDetailsPage = () => {
                     </Row>;
                   })}
                 </Col>
-                <Col lg='6'>
-                {/* {fundDetailsFilterConfig.fields.map((each) => {
+                <Col lg="6">
+                  {/* {fundDetailsFilterConfig.fields.map((each) => {
                   if (each.type == "dropdown") {
                     return (
                       <Row className="mb-3">
@@ -227,27 +240,39 @@ const FundDetailsPage = () => {
                   <Button onClick={updateStatus}>Update Status</Button>
                 </Col>
               </Row> */}
-                <RegisterAllocation id={id}/>
-                {fundDetail && (
-                  <UpdateFund id={id} fundDetail={fundDetail} setFundDetail={setFundDetail} />
-                )}
                 </Col>
               </Row>
             </CardBody>
           </Card>
         </Col>
       </Row>
-      <Row>
-        {allocationList.length > 0 && ( // need to check for whatever we pass to rowData -> on initial render complaintDetails was empty hence datatables was throwing errors as it has some map function looping over rowData without null checks
-          <DataTables
-            title={`Allocations`}
-            columnConfig={columnConfig}
-            rowData={allocationList}
-          />
-        )}
-      </Row>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          marginTop: "1%",
+        }}
+      >
+        <div>
+          <div lg={10}>
+            {allocationList.length > 0 && (
+              <DataTables
+                title={`Allocations`}
+                columnConfig={columnConfig}
+                rowData={allocationList}
+              />
+            )}
+          </div>
+        </div>
+        <div style={{ marginLeft: "1%" }}>
+          {fundDetail && (
+            <RegisterAllocation fundDetail={fundDetail} id={id} />
+          )}
+        </div>
+      </div>
     </>
   );
 };
-
+//style={{float:"right"}}
 export default FundDetailsPage;

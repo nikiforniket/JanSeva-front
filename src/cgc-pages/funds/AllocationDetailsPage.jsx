@@ -55,8 +55,11 @@ const AllocationDetailsPage = () => {
       <Row>
         <Col lg="12">
           <Card className="m-2">
-            <CardHeader>
+            <CardHeader style={{display:'flex', alignItems:'center',justifyContent:'space-between'}}>
               <CardTitle>Allocation Details</CardTitle>
+              {allocationDetails && (
+                  <UpdateAllocation allocationDetails={allocationDetails} setAllocationDetails={setAllocationDetails} monthObj={monthObj} />
+                )}
             </CardHeader>
             <CardBody>
               <Row>
@@ -152,11 +155,9 @@ const AllocationDetailsPage = () => {
                 </Col>
               </Row>
                 </Col> */}
-                <Col lg="3">
-                {allocationDetails && (
-                  <UpdateAllocation allocationDetails={allocationDetails} setAllocationDetails={setAllocationDetails} monthObj={monthObj} />
-                )}
-                </Col>
+                {/* <Col lg="3">
+                
+                </Col> */}
               </Row>
             </CardBody>
           </Card>
