@@ -36,7 +36,7 @@ const PieChartComplaints = () => {
 			offsetY: 5,
 		},
 		labels: ['In Progress', 'Registered', 'Reported', 'Report Acknowledged','Rejected','Resolved'],
-		colors: ['#4d79f6', '#ff5da0', '#e0e7fd', '#4ac7ec','#800000','#3cb44b'],
+		colors: ['#4d79f6', '#ff5da0', '#fabed4', '#4ac7ec','#800000','#3cb44b'],
 		responsive: [
 			{
 				breakpoint: 600,

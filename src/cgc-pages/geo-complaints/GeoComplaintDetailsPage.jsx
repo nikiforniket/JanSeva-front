@@ -36,6 +36,23 @@ const GeoComplaintDetailsPage = () => {
         );
         res.data.created_at = d1;
         res.data.updated_at = d2;
+        switch (res.data.complaint_type){
+          case "poot_hole":
+            res.data.complaint_type = "Poot Hole"
+            break;
+          case "street_light":
+            res.data.complaint_type = "Street Light"
+            break;
+          case "garbage":
+            res.data.complaint_type = "Garbage"
+            break;
+          case "drainage":
+            res.data.complaint_type = "Drainage"
+            break;
+          case "pipe_leak":
+            res.data.complaint_type = "Pipe Leak"
+            break;
+        }
         setGeoComplaintList(res.data);
       }
     });
@@ -162,8 +179,11 @@ const GeoComplaintDetailsPage = () => {
 
               <Row className="mb-3">
                 <Col sm="10">
-                  <h3>Complaint Images</h3>
+                  <h4>Complaint Images</h4>
+                  {geoComplaintDetails.length > 0 ? 
                   <Gallery imgData={geoComplaintDetails.files} />
+                  : <p>No images present</p>
+                  }
                 </Col>
               </Row>
             </CardBody>

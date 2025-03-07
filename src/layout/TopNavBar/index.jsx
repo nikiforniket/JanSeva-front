@@ -5,6 +5,8 @@ import NotificationDropdown from './components/NotificationDropdown'
 import ProfileDropdown from './components/ProfileDropdown'
 import { emails, notifications } from './data'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import { TfiBarChart } from "react-icons/tfi";
 const TopNavbar = () => {
 	const { settings, updateShowRightSideBar, updateSideNavMode } =
 		useThemeContext()
@@ -21,7 +23,7 @@ const TopNavbar = () => {
 	return (
 		<div className="topbar">
 			<nav className="navbar-custom" id="navbar-custom">
-				<ul className="list-unstyled topbar-nav float-end mb-0">
+				<ul className="list-unstyled topbar-nav float-end mb-0" style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
 					{/* <LanguageDropdown /> */}
 
 					{/* <EmailDropdown emails={emails} /> */}
@@ -49,6 +51,12 @@ const TopNavbar = () => {
 							<i className="ti ti-menu-2" />
 						</button>
 					</li>
+					<div style={{display:'flex',alignItems:'center',justifyContent:'center',width:'10%',height:'5%'}}>
+					<TfiBarChart />
+					{/* <div> */}
+					<Link style={{marginLeft:'2%',marginTop:'2%',fontSize:'105%'}} to={'/'}>Dashboard</Link>
+					{/* </div> */}
+					</div>
 					{/* <li className="hide-phone app-search">
 						<form role="search" action="#" method="get">
 							<input

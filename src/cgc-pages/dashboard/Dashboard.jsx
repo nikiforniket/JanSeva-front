@@ -43,7 +43,7 @@ const Dashboard = () => {
   ]
 
   return (
-    <>
+    <div style={{marginLeft:'1%'}}>
       <PageMetaData title="Dashboard" />
       <PageBreadcrumb title={"Dashboard"}/>
       <Row>
@@ -59,7 +59,7 @@ const Dashboard = () => {
 					)
 				})}
 			</Row>
-      <Row>
+      <Row style={{display:'flex',justifyContent:'space-between'}}>
         <Col lg={3}>
         <ActiveComplaints />
         <ActiveGeoComplaints/>
@@ -73,7 +73,7 @@ const Dashboard = () => {
           <AllocationBarChart/>
         </Col>
       </Row>
-    </>
+    </div>
   )
 }
 

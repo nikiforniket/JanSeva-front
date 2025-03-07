@@ -193,7 +193,7 @@ const NewsPage = () => {
       >
         <ModalHeader>
           <h6 className="modal-title m-0" id="exampleModalDefaultLabel">
-            Edit News
+            Add News
           </h6>
           <button
             type="button"
@@ -202,7 +202,7 @@ const NewsPage = () => {
           />
         </ModalHeader>
         <ModalBody>
-          <Row className="mb-3">
+          {/* <Row className="mb-3">
             <FormLabel
               //   htmlFor={id}
               className="col-sm-2 col-form-label text-end"
@@ -221,7 +221,7 @@ const NewsPage = () => {
                 }}
               />
             </Col>
-          </Row>
+          </Row> */}
           <Row className="mb-3">
             <FormLabel
               //   htmlFor={id}
