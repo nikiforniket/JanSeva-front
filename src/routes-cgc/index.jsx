@@ -27,7 +27,7 @@ const NewsDetailPage = lazy(() => import('@/cgc-pages/news/NewsDetailPage'))
 
 const appsRoutes = [
     {
-        path : '/',
+        path : '/dashboard',
         name : 'Dashboard',
         element: <Dashboard/>
     },
