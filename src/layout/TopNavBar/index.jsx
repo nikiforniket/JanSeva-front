@@ -54,7 +54,7 @@ const TopNavbar = () => {
 					<div style={{display:'flex',alignItems:'center',justifyContent:'center',width:'10%',height:'5%'}}>
 					<TfiBarChart />
 					{/* <div> */}
-					<Link style={{marginLeft:'2%',marginTop:'2%',fontSize:'105%'}} to={'/'}>Dashboard</Link>
+					<Link style={{marginLeft:'2%',marginTop:'2%',fontSize:'105%'}} to={'/dashboard'}>Dashboard</Link>
 					{/* </div> */}
 					</div>
 					{/* <li className="hide-phone app-search">
