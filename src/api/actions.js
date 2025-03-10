@@ -270,7 +270,27 @@ export const getAchievementList = async() => {
   return res
 }
 
-export const getNews = async() => {
+export const getFlashNews = async() => {
   const res = await HttpClient.get(`${urlHostname}/flash-news/`)
+  return res
+}
+
+export const getNews = async() => {
+  const res = await HttpClient.get(`${urlHostname}/news/`)
+  return res
+}
+
+export const getNewsDetails = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/news/${id}/`)
+  return res
+}
+
+export const updateNewsDetails = async(id,obj) => {
+  const res = await HttpClient.put(`${urlHostname}/news/${id}/`,obj)
+  return res
+}
+
+export const registerNews = async(obj) => {
+  const res = await HttpClient.post(`${urlHostname}/news/register/`,obj)
   return res
 }

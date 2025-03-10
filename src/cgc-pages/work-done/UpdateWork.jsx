@@ -262,6 +262,8 @@ const UpdateWork = ({ workDetails, setWorkDetails }) => {
             </FormLabel>
             <Col sm="10">
               <FormControl
+              as="textarea"
+              rows={7}
                 type="text"
                 defaultValue={workDetails['description']}
                 value={reqBody['description']}

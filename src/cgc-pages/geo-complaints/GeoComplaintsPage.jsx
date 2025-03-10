@@ -79,16 +79,39 @@ const GeoComplaintsPage = () => {
           switch (obj.status) {
             case "registered":
               obj.status = "Registered";
+              break;
             case "in_progress":
               obj.status = "In Progress";
+              break;
             case "reported":
               obj.status = "Reported";
+              break;
             case "rejected":
               obj.status = "Rejected";
+              break;
             case "resolved":
               obj.status = "Resolved";
+              break;
             case "report_acknowledged":
               obj.status = "Report Acknowledged";
+              break;
+          }
+          switch (obj.complaint_type){
+            case "poot_hole":
+              obj.complaint_type = "Poot Hole"
+              break;
+            case "street_light":
+              obj.complaint_type = "Street Light"
+              break;
+            case "garbage":
+              obj.complaint_type = "Garbage"
+              break;
+            case "drainage":
+              obj.complaint_type = "Drainage"
+              break;
+            case "pipe_leak":
+              obj.complaint_type = "Pipe Leak"
+              break;
           }
           const { d1, d2 } = date_convert(obj.created_at, obj.updated_at);
           obj.created_at = d1;

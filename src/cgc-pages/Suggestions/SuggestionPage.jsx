@@ -58,12 +58,16 @@ const SuggestionPage = () => {
           switch (obj.status) {
             case "rejected":
               obj.status = "Rejected";
+              break;
             case "registered":
               obj.status = "Registered";
+              break;
             case "viewed":
               obj.status = "Viewed";
+              break;
             case "in_consideration":
               obj.status = "In Consideration";
+              break;
           }
           const { d1, d2 } = date_convert(obj.created_at, obj.updated_at);
           obj.created_at = d1;

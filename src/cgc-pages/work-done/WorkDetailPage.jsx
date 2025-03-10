@@ -48,8 +48,11 @@ const WorkDetailPage = () => {
       <Row>
         <Col lg="12">
           <Card className="m-2">
-            <CardHeader>
+          <CardHeader style={{display:'flex', alignItems:'center',justifyContent:'space-between'}}>
               <CardTitle>Work Done Details</CardTitle>
+              {workDetails && (
+                    <UpdateWork workDetails={workDetails} setWorkDetails={setWorkDetails} />
+                )}
             </CardHeader>
             <CardBody>
               <Row>
@@ -104,11 +107,9 @@ const WorkDetailPage = () => {
                     </Row>;
                   })}
                 </Col>
-                <Col lg='6'>
-                {workDetails && (
-                    <UpdateWork workDetails={workDetails} setWorkDetails={setWorkDetails} />
-                )}
-                </Col>
+                {/* <Col lg='6'>
+                
+                </Col> */}
               </Row>
             </CardBody>
           </Card>

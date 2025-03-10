@@ -155,9 +155,10 @@ const UpdateFund = ({ id, fundDetail, setFundDetail }) => {
             </FormLabel>
             <Col sm="10">
               <FormControl
-                type="text"
                 // value={reqBody["description"]}
                 // id={}
+                as="textarea"
+                rows={7}
                 defaultValue={fundDetail.description}
                 onChange={(e) =>
                   setReqBody({ ...reqBody, description: e.target.value })

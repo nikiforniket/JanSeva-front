@@ -36,7 +36,7 @@ export default function useLogin() {
     },
   });
   // const redirectUrl = useMemo(() => (location.state?.from.pathname, location.pathname ?? "/"), [location.state]);
-  const redirectUrl = searchParams.get("next") ?? "/sectors"; // here we will add our home page in else part and in if part other url will come from which we redirected
+  const redirectUrl = searchParams.get("next") ?? "/dashboard"; // here we will add our home page in else part and in if part other url will come from which we redirected
   const login = handleSubmit(async function (values) {
     setLoading(true);
     try {
@@ -60,7 +60,8 @@ export default function useLogin() {
           position: "top-right",
           duration: 3000,
         });
-        dispatch(saveUserInfo(values.phone_number))
+        // dispatch(saveUserInfo(values.phone_number))
+        localStorage.setItem("userInfo",JSON.stringify(values.phone_number));
         navigate(redirectUrl);
       }
     } catch (e) {

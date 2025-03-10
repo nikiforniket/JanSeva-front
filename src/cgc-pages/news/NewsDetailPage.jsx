@@ -1,7 +1,4 @@
-import {
-  getGeoComplaintDetails,
-  updateGeoComplaintDetails,
-} from "@/api/actions";
+import { getNewsDetails } from "@/api/actions";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -16,74 +13,58 @@ import {
   FormSelect,
   Row,
 } from "react-bootstrap";
-import { geoComplaintDetailsFilterConfig } from "@/config/QuickFilters";
-import Gallery from "@/pages/other-pages/Gallery";
-import { PageMetaData } from "@/components";
+import { newsDetailsConfig } from "@/config/QuickFilters";
 import { date_convert } from "@/config/dateConverter";
-import { toast } from "sonner";
+import { PageMetaData } from "@/components";
+import UpdateNews from "./UpdateNews";
 
-const GeoComplaintDetailsPage = () => {
+const NewsDetailPage = () => {
   const { id } = useParams();
-  const [geoComplaintDetails, setGeoComplaintList] = useState({});
-  const [statusValue, setStatusValue] = useState(null);
+  const [newsDetail, setNewsDetail] = useState("");
 
   useEffect(() => {
-    getGeoComplaintDetails(id).then((res) => {
+    getNewsDetails(id).then((res) => {
       if (res?.data) {
-        const { d1, d2 } = date_convert(
-          res.data.created_at,
-          res.data.updated_at
-        );
-        res.data.created_at = d1;
-        res.data.updated_at = d2;
-        switch (res.data.complaint_type){
-          case "poot_hole":
-            res.data.complaint_type = "Poot Hole"
+        switch (res.data.status) {
+          case "created":
+            res.data.status = "Created";
             break;
-          case "street_light":
-            res.data.complaint_type = "Street Light"
+          case "approved":
+            res.data.status = "Approved";
             break;
-          case "garbage":
-            res.data.complaint_type = "Garbage"
+          case "active":
+            res.data.status = "Active";
             break;
-          case "drainage":
-            res.data.complaint_type = "Drainage"
+          case "inactive":
+            res.data.status = "In active";
             break;
-          case "pipe_leak":
-            res.data.complaint_type = "Pipe Leak"
+          case "in_approval":
+            res.data.status = "In approval";
             break;
         }
-        setGeoComplaintList(res.data);
+        const { d1, d2 } = date_convert(null, res.data.updated_at);
+        // res.data.created_at = d1
+        res.data.updated_at = d2;
+        setNewsDetail(res.data);
       }
     });
   }, []);
-
-  const handleStatusChange = (value) => {
-    setStatusValue(value);
-  };
-  const updateStatus = () => {
-    const reqObj = { status: statusValue };
-    updateGeoComplaintDetails(id, reqObj).then((res) => {
-      toast.success("Status updated successfully", {
-        position: "top-right",
-        duration: 3000,
-      });
-    });
-  };
-
   return (
     <>
-      <PageMetaData title="GeoComplaintDetails" />
+    <PageMetaData title="News Details" />
       <Row>
         <Col lg="12">
           <Card className="m-2">
-            <CardHeader>
-              <CardTitle>Geo-Complaint Details</CardTitle>
+          <CardHeader style={{display:'flex', alignItems:'center',justifyContent:'space-between'}}>
+              <CardTitle>News Details</CardTitle>
+              {newsDetail && (
+                    <UpdateNews id={id} newsDetail={newsDetail} setNewsDetail={setNewsDetail}/>
+                )}
             </CardHeader>
             <CardBody>
               <Row>
                 <Col lg="6">
-                  {geoComplaintDetailsFilterConfig.fields.map((each) => {
+                  {newsDetailsConfig.fields.map((each) => {
                     if (each.type == "input") {
                       return (
                         <Row className="mb-3">
@@ -96,7 +77,7 @@ const GeoComplaintDetailsPage = () => {
                           <Col sm="10">
                             <FormControl
                               type="text"
-                              defaultValue={geoComplaintDetails[each.id]}
+                              defaultValue={newsDetail[each.id]}
                               id={each.id}
                               readOnly={!each.edit}
                               disabled={!each.edit}
@@ -114,18 +95,17 @@ const GeoComplaintDetailsPage = () => {
                             {each.label}
                           </FormLabel>
                           <Col sm="10">
-                            <p>{geoComplaintDetails[each.id]}</p>
+                            <p>{newsDetail[each.id]}</p>
                             {/* <FormControl
-                                    as="textArea"
-                                    defaultValue={geoComplaintDetails[each.id]}
-                                    id={each.id}
-                                    readOnly={!each.edit}
-                                  /> */}
+								as="textArea"
+								defaultValue={newsDetail[each.id]}
+								id={each.id}
+								readOnly={!each.edit}
+							  /> */}
                           </Col>
                         </Row>
                       );
                     }
-
                     // <Row className="mb-3">
                     //   <Col></Col>
                     //   <Col sm="10">
@@ -134,8 +114,9 @@ const GeoComplaintDetailsPage = () => {
                     // </Row>;
                   })}
                 </Col>
-                <Col lg="6">
-                  {geoComplaintDetailsFilterConfig.fields.map((each) => {
+                {/* <Col lg="6">
+                
+                  {newsDetailsConfig.fields.map((each) => {
                     if (each.type == "dropdown") {
                       return (
                         <Row className="mb-3">
@@ -148,9 +129,7 @@ const GeoComplaintDetailsPage = () => {
                           <Col sm="10">
                             <FormSelect
                               value={
-                                statusValue
-                                  ? statusValue
-                                  : geoComplaintDetails[each.id]
+                                statusValue ? statusValue : newsDetail[each.id]
                               }
                               id={each.id}
                               onChange={(e) =>
@@ -168,23 +147,7 @@ const GeoComplaintDetailsPage = () => {
                       );
                     }
                   })}
-                  <Row className="mb-3">
-                    <Col></Col>
-                    <Col sm="10">
-                      <Button onClick={updateStatus}>Update Status</Button>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-
-              <Row className="mb-3">
-                <Col sm="10">
-                  <h4>Complaint Images</h4>
-                  {geoComplaintDetails.length > 0 ? 
-                  <Gallery imgData={geoComplaintDetails.files} />
-                  : <p>No images present</p>
-                  }
-                </Col>
+                </Col> */}
               </Row>
             </CardBody>
           </Card>
@@ -194,4 +157,4 @@ const GeoComplaintDetailsPage = () => {
   );
 };
 
-export default GeoComplaintDetailsPage;
+export default NewsDetailPage;

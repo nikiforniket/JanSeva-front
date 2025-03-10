@@ -19,19 +19,20 @@ const GlobalFilter = ({
 }) => {
 	const count = preGlobalFilteredRows.length
 	const [value, setValue] = useState(globalFilter)
-	// const onChange = useAsyncDebounce((value) => {
-	// 	setGlobalFilter(value || undefined)
-	// }, 200)
+	// const onSearch = useAsyncDebounce((value) => {
+	const onSearch = (value) => {
+		setGlobalFilter(value || undefined)
+	}
 	return (
 		<div className={clsx(searchBoxClass)}>
 			<span className="d-flex align-items-center">
 				Search :{' '}
 				<input
 					value={value || ''}
-					// onChange={(e) => {
-					// 	setValue(e.target.value)
-					// 	onChange(e.target.value)
-					// }}
+					onChange={(e) => {
+						setValue(e.target.value)
+						onSearch(e.target.value)
+					}}
 					placeholder={`${count} records...`}
 					className="form-control w-auto ms-1"
 				/>
@@ -63,7 +64,7 @@ const Table = (props) => {
 	const pagination = props['pagination'] || false
 	const isSelectable = props['isSelectable'] || false
 	const isExpandable = props['isExpandable'] || false
-	const sizePerPageList = props['sizePerPageList'] || []
+	const sizePerPageList = 5
 	const otherProps = {}
 	if (isSearchable) {
 		otherProps['useGlobalFilter'] = useGlobalFilter
@@ -165,7 +166,7 @@ const Table = (props) => {
 				<GlobalFilter
 					preGlobalFilteredRows={dataTable.preGlobalFilteredRows}
 					globalFilter={dataTable.state.globalFilter}
-					// setGlobalFilter={dataTable.setGlobalFilter}
+					setGlobalFilter={dataTable.setGlobalFilter}
 					searchBoxClass={props['searchBoxClass']}
 				/>
 			)}

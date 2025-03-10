@@ -222,7 +222,8 @@ const UpdateAllocation = ({ allocationDetails, setAllocationDetails, monthObj}) 
             </FormLabel>
             <Col sm="10">
               <FormControl
-                type="textarea"
+              as="textarea"
+              rows={7}
                 style={{}}
                 defaultValue={allocationDetails["description"]}
                 // value={departmentName}

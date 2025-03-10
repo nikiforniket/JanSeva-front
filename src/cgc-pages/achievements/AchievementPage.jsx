@@ -6,8 +6,6 @@ import {
   getSectorForScheme,
   getWorkDoneList,
   registerWorkDone,
-  selectFundForWorkDone,
-  testapi,
 } from "@/api/actions";
 import { date_convert } from "@/config/dateConverter";
 import DataTables from "@/pages/uikit/tables/DataTables";
@@ -157,7 +155,6 @@ const AchievementPage = () => {
   const [schemeDDOpt, setSchemeDDOpt] = useState("");
 
   useEffect(() => {
-    // testapi().then((res)=>{})
     // try{
     // const res = await getWorkDoneList()
     getAchievementList().then((res) => {
@@ -465,7 +462,8 @@ const AchievementPage = () => {
             </FormLabel>
             <Col sm="10">
               <FormControl
-                type="text"
+                as="textarea"
+                rows={7}
                 // value={}
                 // id={}
                 onChange={(e) =>

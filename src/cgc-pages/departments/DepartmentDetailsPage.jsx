@@ -84,12 +84,15 @@ const DepartmentDetailsPage = () => {
       <Row>
         <Col lg="12">
           <Card className="m-2">
-            <CardHeader>
+            <CardHeader style={{display:'flex', alignItems:'center',justifyContent:'space-between'}}>
               <CardTitle>Sector Details</CardTitle>
+              <div >
+              <UpdateDepartment id={id} departmentName={departmentDetails.name} setDepartmentDetails={setDepartmentDetails} />
+              </div>
             </CardHeader>
             <CardBody>
               <Row>
-                <Col lg="6">
+                <Col lg="9">
                   {departmentDetailsFilterConfig.fields.map((each) => {
                     if (each.type == "input") {
                       return (
@@ -142,25 +145,32 @@ const DepartmentDetailsPage = () => {
                       // {departmentList && (
                       return (
                         <Row className="mb-3" style={{display:'flex', alignItems:'center',justifyContent:'center'}}>
+                          {/* <Col > */}
                           <FormLabel
                             htmlFor={each.id}
                             className="col-sm-2 col-form-label text-end"
                           >
                             {each.label}
                           </FormLabel>
-                          <Col sm="10">
+                          <Col sm="10" style={{display:'flex', justifyContent:'space-between'}}>
                           <DataTables
                             columnConfig={categoryTableConfig}
                             rowData={categoryData ? categoryData : departmentDetails[each.id]}
                           />
+                          <div style={{float:'right',marginLeft:'1%'}}>
+                          <AddCategory id={id} setCategoryData={setCategoryData} />
+                          </div>
                           </Col>
+                          {/* </Col> */}
+                          {/* <Col >
+                          </Col> */}
                         </Row>
                       );
                       // )}
                     }
                   })}
                 </Col>
-                <Col lg='6'>
+                <Col lg='3'>
                   {/* <Button variant="info" onClick={toggleAddCategory}>Add Category</Button> */}
                   {/* {showAddCategoryForm && (
                     <Row className="mb-3 mt-3">
@@ -184,8 +194,6 @@ const DepartmentDetailsPage = () => {
                     </Col>
                   </Row>
                   )} */}
-                  <AddCategory id={id} setCategoryData={setCategoryData} />
-                  <UpdateDepartment id={id} departmentName={departmentDetails.name} setDepartmentDetails={setDepartmentDetails} />
                 </Col>
               </Row>
             </CardBody>
