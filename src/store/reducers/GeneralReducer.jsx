@@ -1,4 +1,4 @@
-import { SAVE_USER_INFO, SET_ACH_LIST, SET_ALLOCATION_LIST, SET_FUND_DD_OPT, SET_FUND_LIST, SET_LOCATION_DD_OPT, SET_SCHEME_LIST, SET_SUB_LOCATION_DD_OPT, SET_WORK_DONE_LIST } from "../actions/ActionTypes"
+import { SAVE_USER_INFO, SET_ACH_LIST, SET_ALLOCATION_LIST, SET_DRUG_COMPLAINT_LIST, SET_FUND_DD_OPT, SET_FUND_LIST, SET_LOCATION_DD_OPT, SET_SCHEME_LIST, SET_SUB_LOCATION_DD_OPT, SET_WORK_DONE_LIST } from "../actions/ActionTypes"
 
 
 const initial_state = {
@@ -10,7 +10,8 @@ const initial_state = {
     locationDDOpt:'',
     subLocationDDOpt:'',
     fundDDOpt:'',
-    achList:''
+    achList:'',
+    drugComplaintList:''
 }
 
 const GeneralReducer = (state = initial_state, action) => {
@@ -41,6 +42,9 @@ const GeneralReducer = (state = initial_state, action) => {
         }
         case SET_ACH_LIST: {
             return {...state, achList:action.payload}
+        }
+        case SET_DRUG_COMPLAINT_LIST: {
+            return {...state, drugComplaintList:action.payload}
         }
         default:
             return state

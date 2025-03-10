@@ -1,4 +1,4 @@
-import { getComplaintDetails, updateComplaintDetails } from "@/api/actions";
+import { getDrugDetails, updateDrugComplaint } from "@/api/actions";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -13,19 +13,18 @@ import {
   FormSelect,
   Row,
 } from "react-bootstrap";
-import { complaintDetailsFilterConfig } from "@/config/QuickFilters";
+import { drugComplaintFilterConfig } from "@/config/QuickFilters";
 import { toast } from "sonner";
 import { date_convert } from "@/config/dateConverter";
 import { PageMetaData } from "@/components";
 
-const ComplaintDetailsPage = () => {
+const DrugDetailPage = () => {
   const { id } = useParams();
-
-  const [complaintDetails, setComplaintDetails] = useState({});
+  const [drugDetails, setDrugDetails] = useState("");
   const [statusValue, setStatusValue] = useState(null);
 
   useEffect(() => {
-    getComplaintDetails(id).then((res) => {
+    getDrugDetails(id).then((res) => {
       if (res?.data) {
         const { d1, d2 } = date_convert(
           res.data.created_at,
@@ -33,7 +32,7 @@ const ComplaintDetailsPage = () => {
         );
         res.data.created_at = d1;
         res.data.updated_at = d2;
-        setComplaintDetails(res.data);
+        setDrugDetails(res.data);
       }
     });
   }, []);
@@ -41,28 +40,30 @@ const ComplaintDetailsPage = () => {
   const handleStatusChange = (value) => {
     setStatusValue(value);
   };
+
   const updateStatus = () => {
     const reqObj = { status: statusValue };
-    updateComplaintDetails(id, reqObj).then((res) => {
+    updateDrugComplaint(id, reqObj).then((res) => {
       toast.success("Status updated successfully", {
         position: "top-right",
         duration: 3000,
       });
     });
   };
+
   return (
     <>
-      <PageMetaData title="Complaints Details" />
+        <PageMetaData title="Drug Complaints Details" />
       <Row>
         <Col lg="12">
           <Card className="m-2">
             <CardHeader>
-              <CardTitle>Complaint Details</CardTitle>
+              <CardTitle>Drug Complaint Details</CardTitle>
             </CardHeader>
             <CardBody>
               <Row>
                 <Col lg="6">
-                  {complaintDetailsFilterConfig.fields.map((each) => {
+                  {drugComplaintFilterConfig.fields.map((each) => {
                     if (each.type == "input") {
                       return (
                         <Row className="mb-3">
@@ -75,7 +76,7 @@ const ComplaintDetailsPage = () => {
                           <Col sm="10">
                             <FormControl
                               type="text"
-                              defaultValue={complaintDetails[each.id]}
+                              defaultValue={drugDetails[each.id]}
                               id={each.id}
                               readOnly={!each.edit}
                               disabled={!each.edit}
@@ -93,27 +94,27 @@ const ComplaintDetailsPage = () => {
                             {each.label}
                           </FormLabel>
                           <Col sm="10">
-                            <p>{complaintDetails[each.id]}</p>
+                            <p>{drugDetails[each.id]}</p>
                             {/* <FormControl
-								as="textArea"
-								defaultValue={complaintDetails[each.id]}
-								id={each.id}
-								readOnly={!each.edit}
-							  /> */}
+                              as="textArea"
+                              defaultValue={drugDetails[each.id]}
+                              id={each.id}
+                              readOnly={!each.edit}
+                            /> */}
                           </Col>
                         </Row>
                       );
                     }
-                    <Row className="mb-3">
-                      <Col></Col>
-                      <Col sm="10">
-                        <Button onClick={updateStatus}>Save Status</Button>
-                      </Col>
-                    </Row>;
+                    // <Row className="mb-3">
+                    //   <Col></Col>
+                    //   <Col sm="10">
+                    //     <Button onClick={updateStatus}>Save Status</Button>
+                    //   </Col>
+                    // </Row>;
                   })}
                 </Col>
                 <Col lg="6">
-                  {complaintDetailsFilterConfig.fields.map((each) => {
+                  {drugComplaintFilterConfig.fields.map((each) => {
                     if (each.type == "dropdown") {
                       return (
                         <Row className="mb-3">
@@ -126,9 +127,7 @@ const ComplaintDetailsPage = () => {
                           <Col sm="10">
                             <FormSelect
                               value={
-                                statusValue
-                                  ? statusValue
-                                  : complaintDetails[each.id]
+                                statusValue ? statusValue : drugDetails[each.id]
                               }
                               id={each.id}
                               onChange={(e) =>
@@ -162,4 +161,4 @@ const ComplaintDetailsPage = () => {
   );
 };
 
-export default ComplaintDetailsPage;
+export default DrugDetailPage;

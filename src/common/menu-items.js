@@ -81,6 +81,20 @@ const TWO_COl_MENU_ITEMS = [
 			},
 		],
 	},
+	{
+		key: 'Against Drugs',
+		icon: 'smart-home',
+		label: 'Against Drugs',
+		isTitle: true,
+		children: [
+			{
+				key: 'Drug Complaint',
+				label: 'Drug Complaint',
+				url: '/drugs',
+				parentKey: 'Against Drugs',
+			},
+		],
+	},
 	// {
 	// 	key: 'Departments & Categories',
 	// 	icon: 'smart-home',

@@ -18,3 +18,5 @@ export const setSubLocationDDOpt = createAction(actionTypes.SET_SUB_LOCATION_DD_
 export const setFundDDOpt = createAction(actionTypes.SET_FUND_DD_OPT)
 
 export const setAchList = createAction(actionTypes.SET_ACH_LIST)
+
+export const setDrugComplaintList = createAction(actionTypes.SET_DRUG_COMPLAINT_LIST)

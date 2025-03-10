@@ -24,6 +24,24 @@ const complaintStatus = [
     value: "resolved",
   },
 ];
+const drugComplaintStatus = [
+  {
+    label: "Registered",
+    value: "registered",
+  },
+  {
+    label: "In Progress",
+    value: "in_progress",
+  },
+  {
+    label: "Reported",
+    value: "reported",
+  },
+  {
+    label: "Rejected",
+    value: "rejected",
+  }
+];
 const DemandStatus = [
   {
     label: "Registered",
@@ -525,7 +543,6 @@ export const allocationDetailsFilterConfig = {
       options: [],
       edit: false,
     },
-    
     {
       label: "Created At",
       id: "created_at",
@@ -677,6 +694,74 @@ export const newsDetailsConfig = {
     {
       id: "status",
       label: "Status",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "updated_at",
+      label: "Updated At",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+  ],
+};
+
+export const drugComplaintFilterConfig = {
+  fields: [
+    {
+      label: "Id",
+      id: "uuid",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "user",
+      label: "User",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "complaint_againt_name",
+      label: "Complaint against Name",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "complaint_againt_contact_details",
+      label: "Complaint against contact details",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "description",
+      label: "Description",
+      type: "textarea",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "location",
+      label: "Location",
+      type: "input",
+      options: [],
+      edit: false,
+    },
+    {
+      id: "status",
+      label: "Status",
+      type: "dropdown",
+      options: drugComplaintStatus,
+      edit: false,
+    },
+    {
+      label: "Created At",
+      id: "created_at",
       type: "input",
       options: [],
       edit: false,

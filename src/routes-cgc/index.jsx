@@ -24,6 +24,8 @@ const AchievementPage = lazy(() => import('@/cgc-pages/achievements/AchievementP
 const AchievementDetailPage = lazy(() => import('@/cgc-pages/achievements/AchievementDetailPage'))
 const NewsPage = lazy(() => import('@/cgc-pages/news/NewsPage'))
 const NewsDetailPage = lazy(() => import('@/cgc-pages/news/NewsDetailPage'))
+const DrugsPage = lazy(() => import('@/cgc-pages/drugs/DrugsPage'))
+const DrugDetailPage = lazy(() => import('@/cgc-pages/drugs/DrugDetailPage'))
 
 const appsRoutes = [
     {
@@ -135,6 +137,16 @@ const appsRoutes = [
         path : '/news/:id',
         name : 'NewsDetailPage',
         element: <NewsDetailPage/>
+    },
+    {
+        path : '/drugs',
+        name : 'DrugPage',
+        element: <DrugsPage/>
+    },
+    {
+        path : '/drugs/:id',
+        name : 'DrugDetailPage',
+        element: <DrugDetailPage/>
     },
 ]
 

@@ -294,3 +294,20 @@ export const registerNews = async(obj) => {
   const res = await HttpClient.post(`${urlHostname}/news/register/`,obj)
   return res
 }
+
+// Drug Complaint Api
+
+export const getDrugList = async() => {
+  const res = await HttpClient.get(`${urlHostname}/drug-complaints/`)
+  return res
+}
+
+export const getDrugDetails = async(id) => {
+  const res = await HttpClient.get(`${urlHostname}/drug-complaints/${id}`)
+  return res
+}
+
+export const updateDrugComplaint = async(id,obj) => {
+  const res = await HttpClient.put(`${urlHostname}/drug-complaints/${id}/`,obj)
+  return res
+}
