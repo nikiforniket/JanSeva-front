@@ -29,7 +29,7 @@ const DrugDetailPage = lazy(() => import('@/cgc-pages/drugs/DrugDetailPage'))
 
 const appsRoutes = [
     {
-        path : '/dashboard',
+        path : '/',
         name : 'Dashboard',
         element: <Dashboard/>
     },
