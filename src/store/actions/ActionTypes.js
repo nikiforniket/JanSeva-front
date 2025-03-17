@@ -25,3 +25,5 @@ export const SET_SUB_LOCATION_DD_OPT = 'Set subLocation dropdown option for work
 export const SET_FUND_DD_OPT = 'Set fund dropdown options for work done add and update'
 
 export const SET_ACH_LIST = 'Set Achievement List'
+
+export const SET_DRUG_COMPLAINT_LIST = 'Set Drug Complaint List'
